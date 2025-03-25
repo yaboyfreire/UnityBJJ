@@ -5,17 +5,6 @@
   
 }
 
-html,body{
-  background-image: url('./Images/Image1.jpg');
-  background-position: center bottom -200px;
-  background-size: cover;
-  min-width: 100%;
-  overflow-x: hidden;
-  font-size: 16px;
-  font-family: 'Oswald', sans-serif;
-  position: relative;
-}
-
 
 header .navigation {
   display: flex;
@@ -107,6 +96,7 @@ header .navigation .menu-list li a {
   display: flex;
   justify-content: space-between;
   flex-grow: 0; /* Prevent menu items from growing */
+  font-family: 'Oswald', sans-serif;
 }
 
 /* ====================
@@ -115,6 +105,13 @@ header .navigation .menu-list li a {
 .intro-section {
   height: 100vh;
   position: relative;
+  background-image: url('./Images/Image1.jpg');
+  background-position: center bottom -200px;
+  background-size: cover;
+  min-width: 100%;
+  overflow-x: hidden;
+  font-size: 16px;
+  font-family: 'Oswald', sans-serif;
 
 }
 
@@ -322,6 +319,28 @@ header .navigation .menu-list li a {
 
 }
 
+.second-section {
+  height: 350px;
+  background-image: url('./Images/UnityBeltBJJ.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center; /* Centers content vertically */
+  padding: 0 20px; /* Adds some padding to avoid the text sticking to the edges */
+}
+
+.second-section span {
+  display: block; /* Makes it behave like a paragraph */
+  margin-bottom: 20px; /* Adds space after the text */
+  max-width: 1000px; /* Limits the width of the text */
+  text-align: left; /* Center-aligns the text */
+  line-height: 1.6; /* Increases space between lines */
+  color: rgb(0, 0, 0); /* Adjust text color to stand out on the background */
+  font-family: 'Oswald', sans-serif;
+  font-size: x-large;
+  margin-left:5%;
+}
 
 /* small mobile :320px. */
 
