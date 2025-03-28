@@ -342,17 +342,24 @@ header .navigation .menu-list li a {
   margin-left:5%;
 }
 
-/* small mobile :320px. */
+.third-section {
+  height: 115vh;
+  background-image: url('./Images/ThirdSection.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
 
-@media only screen and (max-width: 479px) {
-
-  .intro-inner .intro-content h1 {
-    font-size: 2rem;
-    letter-spacing: 1px;
-  }
-
-  .intro-inner .intro-content p {
-    margin-top: 10px;
-  }
-
+.HomePageProfessor{
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width:60vh;
+  height:60vh;
+  background-color: #ffffffda;
+  background-size: cover;
+  justify-content: center;
 }
