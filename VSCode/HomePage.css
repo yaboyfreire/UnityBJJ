@@ -342,24 +342,63 @@ header .navigation .menu-list li a {
   margin-left:5%;
 }
 
-.third-section {
-  height: 115vh;
-  background-image: url('./Images/ThirdSection.png');
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
+
+.black-belts-section {
+  text-align: center;
+  background: url('./Images/ThirdSection.png') center/contain no-repeat;
+  background-size:200vh;
+  height: 103vh;
 }
 
-.HomePageProfessor{
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  width:60vh;
-  height:60vh;
-  background-color: #ffffffda;
-  background-size: cover;
-  justify-content: center;
+.black-belts-section h2 {
+  font-size: 5.5rem; /* Increase font size */
+  font-family: 'Oswald', sans-serif; /* Set Oswald font */
+  
 }
+
+
+.highlight {
+  color: red;
+}
+
+
+.black-belts-container {
+  display: flex;
+  flex-wrap: wrap; /* Ensures responsiveness */
+  justify-content: center; /* Centers items horizontally */
+  gap: 20vh; /* Adds space between cards */
+}
+
+.black-belt-card {
+  background: rgba(255, 255, 255, 0.89); /* White background */
+  padding: 20px;
+  width: 40vh;
+  margin-top:20vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content */
+}
+
+.black-belt-card img {
+  width: 80%; /* Set a fixed width */
+  height: 90%; /* Set a fixed height */
+  object-fit: cover; /* Ensures the image fills the space properly */
+  image-rendering: crisp-edges; /* Enhances sharpness */
+  image-rendering: -webkit-optimize-contrast; /* For better clarity on WebKit browsers */
+
+}
+
+.black-belt-card h3 {
+  margin-top: 10px;
+  font-size: 2em;
+  font-family: 'Oswald', sans-serif; /* Set Oswald font */
+}
+
+.black-belt-card p {
+  font-family: 'Oswald', sans-serif; /* Set Oswald font */
+  font-size: 1.5em;
+  color: #000000;
+}
+
