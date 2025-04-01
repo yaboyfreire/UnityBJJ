@@ -5,6 +5,87 @@
   
 }
 
+/* ====== DROPDOWN STYLES ====== */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: calc(100% + 5px); /* Small gap below parent */
+  left: 50%;
+  transform: translateX(-50%); /* Perfect centering */
+  background-color: rgba(0, 0, 0, 0.959);
+  min-width: 220px; /* Increased width */
+  width: max-content; /* Expand to content width */
+
+  z-index: 100;
+  border-radius: 6px;
+  padding: 12px 0;
+  text-align: center; /* Center all text */
+}
+
+/* Dropdown menu items */
+.dropdown-content a {
+  display: block;
+  padding: 12px 25px; /* Larger click area */
+  color: #333;
+  text-decoration: none;
+  font-size: 15px;
+  transition: background 0.2s ease;
+}
+
+.dropdown-content a:hover {
+  background: #4d4d4d;
+}
+
+/* ====== NAVIGATION MENU STYLES ====== */
+.navigation {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  position: relative;
+}
+
+.menu-list {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu-list li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.menu-list li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 20px;
+  white-space: nowrap;
+  position: relative;
+}
+
+/* Active state for dropdown parent */
+.menu-list li.dropdown-active > a::after {
+  font-size: 0.7em;
+  margin-left: 4px;
+  opacity: 0.8;
+}
+
+/* Hover state for main nav items */
+.menu-list li:not(.dropdown-active):hover > a {
+  background: rgba(0,0,0,0.03);
+}
 
 header .navigation {
   display: flex;
