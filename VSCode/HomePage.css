@@ -483,3 +483,95 @@ header .navigation .menu-list li a {
   color: #000000;
 }
 
+/* Footer */
+footer {
+  background: black;
+  padding: 30px 10%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Permite que os itens se ajustem quando necessário em dispositivos menores */
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%; /* Garante que ocupe toda a largura disponível */
+}
+
+.footer-section {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column; /* Alinha os itens verticalmente dentro de cada seção */
+  justify-content: space-between; /* Garante que os itens fiquem distribuídos de maneira uniforme dentro de cada seção */
+  flex-grow: 1; /* Permite que cada seção cresça para ocupar o espaço disponível */
+}
+
+
+.footer-section h3 {
+  color: white;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section ul li {
+  color: white;
+  font-size: 1em;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease; /* Adiciona transição suave ao mudar a cor */
+}
+
+.footer-section ul li a:hover {
+  color: #e20505; /* Altera a cor para vermelho quando o mouse passar por cima */
+
+}
+
+/* Barra separadora no footer */
+.footer-bottom {
+  width: 100%;
+  padding-top: 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+}
+
+.separator {
+  width: 100%; /* Garante que a barra ocupe toda a largura */
+  border: none; /* Remove as bordas padrão do <hr> */
+  border-top: 2px solid #e20505; /* Linha vermelha */
+  margin: 0; /* Remove margens automáticas */
+}
+
+.footer-bottom p {
+  text-align: center;
+  color: #fff;
+  font-size: 1em;
+  margin-top: 10px;
+}
+
+
+/* Ícones do footer */
+.footer-section img {
+  width: 20px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.footer-section a {
+  color: red;
+  text-decoration: none;
+}
