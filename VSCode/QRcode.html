@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="QRcode.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="card">
+        <h2>Kimono Avançado</h2>
+        <p>20:00 - 22:00</p>
+
+        <div id="qrcode"></div>
+
+        <div class="code" id="randomNumber">1 2 3 4 5 6</div>
+
+        <!-- Student Number Input -->
+        <div class="input-container">
+            <label for="studentNumber">Student Number:</label>
+            <input type="number" id="studentNumber" placeholder="Enter your student number">
+        </div>
+    </div>
+
+    <script src="QRcode.js"></script>
+</body>
+</html>
