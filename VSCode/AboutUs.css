@@ -15,61 +15,105 @@ html, body {
 
 /* Header */
 header {
-    background-color:  #0A0A0A;  /* Cor de fundo escura */
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
 }
 
-/* Barra cinza clara mais grossa acima do header */
-.header-bar {
-    width: 100%;  /* Garante que a barra ocupe toda a largura da tela */
-    height: 5px;  /* Aumenta a altura da barra para torná-la mais grossa */
-    background-color: #f5f5f5;  /* Cor cinza claro para a barra */
-    position: absolute;  /* Fixa a barra no topo */
-    top: 0;  /* Coloca a barra no topo da página */
-    left: 0;  /* Garante que a barra ocupe toda a largura */
-    z-index: 10;  /* Garante que a barra fique acima de outros elementos */
-}
-.logo img {
-    width: 120px;
+header .navigation {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  height:9%;
+  min-width: 100%;
+  z-index: 10;
+  background: #000000cc;
 }
 
-.navigation {
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-    justify-content: space-between;
+header .navigation .logo{
+  margin-left: 1%;
+  margin-right:5%;
 }
 
-.menu-list {
-    list-style: none;
-    display: flex;
-    margin-left: 20px;
+header .navigation .logo h1{
+  color: #b1d4e0;
+  font-size: 30px;
+  line-height: 38px;
 }
 
-.menu-list li {
-    margin: 0 15px;
+header .navigation .menu-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 45%;
+  margin: auto 20px auto 0;
 }
 
-.menu-list li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2em;
-    font-weight: bold;
+.LoginBtn{
+  
+  margin-left:auto;
+  margin-right:1%;
+  background-color: #00000000; 
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'Oswald', sans-serif;
 }
 
-/* Botão JOIN NOW */
-.join-btn {
-    background: red;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 1.4em;
-    font-weight: bold;
-    margin-left: auto;
+.LoginBtn:hover {
+  background-color: #ff0000;
+  cursor:pointer;
+}
+.button1{
+
+  margin-right:5%;
+  background-color: #ff0000; 
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'Oswald', sans-serif;
+}
+.button1:hover {
+  
+  background-color: #db0505;
+  cursor:pointer;
+}
+
+header .navigation .humbarger {
+  margin-right: 20px;
+  display: none;
+}
+ 
+header .navigation .humbarger .bar{
+  width: 30px;
+  height: 2px;
+  margin: 7px;
+  background: #b1d4e0;
+ }
+
+header .navigation .menu-list li a {
+  color: #b1d4e0;
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 1s ease, border 1s ease;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 0; /* Prevent menu items from growing */
+  font-family: 'Oswald', sans-serif;
 }
 
 /* Hero Section */
