@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <a href="#">My Account</a>
         <a href="#">Payments</a>
         <a href="#">Progress</a>
-        <a href="#">Upcoming Competitions</a>
+        <a href="Competitions.html">Upcoming Competitions</a>
         <a href="#" class="logout-link">Logout</a>
     `;
     
@@ -79,11 +79,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function handleMembershipClick(e) {
+        // If the clicked target is "Upcoming Competitions", don't prevent the default behavior
+        if (e.target.tagName === 'A' && e.target.getAttribute('href') === 'Competitions.html') {
+            return; // Let the link work
+        }
+    
         if (isLoggedIn && e.target.tagName === 'A' && !e.target.classList.contains('logout-link')) {
-            e.preventDefault();
+            e.preventDefault(); // Prevent default behavior for other links
             dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
         }
     }
+    
 
     function handleDropdownClick(e) {
         if (e.target.classList.contains('logout-link')) {

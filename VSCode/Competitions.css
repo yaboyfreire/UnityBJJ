@@ -1,0 +1,377 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* ====== NAVIGATION MENU STYLES ====== */
+  .navigation {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    position: relative;
+  }
+  
+  .menu-list {
+    display: flex;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .menu-list li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .menu-list li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 20px;
+    white-space: nowrap;
+    position: relative;
+  }
+  
+  header .navigation {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    height: 9%;
+    min-width: 100%;
+    z-index: 10;
+    background: #000000cc;
+  }
+  
+  header .navigation .logo {
+    margin-left: 1%;
+    margin-right: 5%;
+  }
+  
+  header .navigation .logo h1 {
+    color: #b1d4e0;
+    font-size: 30px;
+    line-height: 38px;
+  }
+  
+  header .navigation .menu-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 45%;
+    margin: auto 20px auto 0;
+  }
+  
+  .LoginBtn {
+    margin-left: auto;
+    margin-right: 1%;
+    background-color: #00000000;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Oswald', sans-serif;
+  }
+  
+  .LoginBtn:hover {
+    background-color: #ff0000;
+    cursor: pointer;
+  }
+  
+  .button1 {
+    margin-right: 5%;
+    background-color: #ff0000;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Oswald', sans-serif;
+  }
+  
+  .button1:hover {
+    background-color: #db0505;
+    cursor: pointer;
+  }
+  
+  header .navigation .humbarger {
+    margin-right: 20px;
+    display: none;
+  }
+  
+  header .navigation .humbarger .bar {
+    width: 30px;
+    height: 2px;
+    margin: 7px;
+    background: #b1d4e0;
+  }
+  
+  header .navigation .menu-list li a {
+    color: #b1d4e0;
+    font-size: 1.25rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 1s ease, border 1s ease;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 0;
+    font-family: 'Oswald', sans-serif;
+  }
+  
+  /* ====== DROPDOWN STYLES ====== */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.959);
+    min-width: 220px;
+    width: max-content;
+    z-index: 100;
+    border-radius: 6px;
+    padding: 12px 0;
+    text-align: center;
+  }
+  
+  .dropdown-content a {
+    display: block;
+    padding: 12px 25px;
+    color: #333;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background 0.2s ease;
+  }
+  
+  .dropdown-content a:hover {
+    background: #4d4d4d;
+  }
+  
+
+
+  /* ====== FOOTER STYLES ====== */
+  footer {
+    background: black;
+    padding: 30px 10%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .footer-section {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+  
+  .footer-section h3 {
+    color: white;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .footer-section p,
+  .footer-section ul li {
+    color: white;
+    font-size: 1em;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #e20505;
+  }
+  
+  .footer-bottom {
+    width: 100%;
+    padding-top: 20px;
+  }
+  
+  .separator {
+    width: 100%;
+    border: none;
+    border-top: 2px solid #e20505;
+    margin: 0;
+  }
+  
+  .footer-bottom p {
+    text-align: center;
+    color: #fff;
+    font-size: 1em;
+    margin-top: 10px;
+  }
+  
+  .footer-section img {
+    width: 20px;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+  
+  .footer-section a {
+    color: red;
+    text-decoration: none;
+  }
+
+/* Competitions Grid Styles */
+.competitions-grid {
+    background-image: url('./Images/CompetitionsBackGround.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: white;
+    padding: 40px 5%;
+    padding-top: 130px;
+    position: relative;
+    z-index: 1;
+}
+
+.competitions-grid::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* dark overlay */
+    z-index: -1;
+}
+
+.section-title {
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: white; /* or try #ff0000 for a strong punch */
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7); /* soft shadow for glow */
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.competition-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.15s ease;
+    width:90%;
+    height:99%;
+}
+
+.competition-card:hover {
+    transform: translateY(-15px);
+}
+
+.banner-image {
+    height: 180px;
+    overflow: hidden;
+}
+
+.banner-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.competition-info {
+    padding: 20px;
+    background: #f9f9f9;
+}
+
+.comp-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    color: #d10000;
+    margin-bottom: 10px;
+}
+
+.comp-location {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.comp-date {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Responsive Grid */
+@media screen and (max-width: 992px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .competition-info {
+        padding: 15px;
+    }
+}
+
+html, body {
+    height: 100%;
+    
+  }
+  
+  body {
+    
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  main {
+    flex: 1;
+  }
