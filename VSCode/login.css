@@ -1,0 +1,136 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('./Images/Login.png'); /* Caminho da imagem */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container {
+    display: flex;
+    width: 800px;
+    height: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo-container {
+    flex: 1;
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-container img {
+    max-width: 90%;
+}
+
+.login-container {
+    flex: 1;
+    background-color: #777;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color: white;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+input[type="email"],
+.password-field input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    padding-right: 40px; /* para espaço do ícone, mesmo que o email não use */
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    background-color: black;
+    color: white;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #333;
+}
+
+
+.password-field {
+    position: relative;
+    width: 100%;
+}
+
+.password-field input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    padding-right: 40px; /* espaço extra só à direita */
+    border-radius: 4px;
+    border: none;
+    font-size: 16px;
+}
+.password-field i {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    color: #555;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Estilo do link "Forgot Password?" */
+.forgot-password {
+    color: #ccc;
+    font-size: 14px;
+    text-align: right;
+    display: block;
+    margin-bottom: 20px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.forgot-password:hover {
+    color: white;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: white;
+}
+
+.register-link a {
+    color: white;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.register-link a:hover {
+    color: #ccc;
+}

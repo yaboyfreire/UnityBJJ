@@ -1,0 +1,89 @@
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+    }
+    .container {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+    }
+    .logo-section {
+        background-color: #222;
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .logo-section img {
+        width: 50%;
+    }
+
+    .form-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.4); /* camada escura por cima da imagem */
+        z-index: 1;
+    }
+    .form-section {
+        position: relative;
+        width: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url('Images/register.png');
+        background-repeat: no-repeat;
+        background-size: 100% 150%; /* Aumenta a altura da imagem */
+        background-position: center;
+    }
+    .form-container {
+        background: rgba(255, 255, 255, 0.9); /* branco com transparência */
+        padding: 20px;
+        border-radius: 8px;
+        width: 80%;
+        max-width: 400px;
+        z-index: 2;
+        position: relative;
+        box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+
+    
+    h2 {
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: 24px;
+        font-weight: bold;
+    }
+    label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #333;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    button:hover {
+        background-color: #222;
+    }

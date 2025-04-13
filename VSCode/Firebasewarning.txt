@@ -1,0 +1,3 @@
+Não dá para fazer ações com a firebase se não for com o LiveServer ou entao a usar o localhost(ou seja Run->Start Debugging dá erro de CORS e não carrega dados)
+http://localhost:8080/VSCode/GenericHomePage.html
+http://localhost:8080/VSCode/TestCompetitionsBackEnd.html

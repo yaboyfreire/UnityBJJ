@@ -9,13 +9,16 @@
   <h1>Competitions</h1>
   <div id="competitions-list"></div>
 
-  <!-- Import the Firebase modules and external JS file -->
+  <!-- Import the Firebase.js module -->
   <script type="module" src="FireBase/Firebase.js"></script>
+  
+  <!-- Import the custom script that calls Firebase functions -->
   <script type="module">
+    // Ensure showCompetitions is called after Firebase.js is fully loaded
     import { showCompetitions } from './FireBase/Firebase.js';
-    // Call the showCompetitions function once the page content is loaded
+    
     document.addEventListener("DOMContentLoaded", function() {
-      showCompetitions();  // Now showCompetitions is properly imported and called
+      showCompetitions();  // Call the function to display competitions after page load
     });
   </script>
 </body>
