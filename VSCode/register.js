@@ -1,8 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import { getFirestore, collection, doc, setDoc, Timestamp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+import { getFirestore, doc, setDoc, Timestamp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 
-// 🔐 Configuração do Firebase
+// Firebase config
 const firebaseConfig = {
     apiKey: "AIzaSyAvXmhq6Gj75Jbuxqph4rJGmlLz6axXIoc",
     authDomain: "unitybjj-254ce.firebaseapp.com",
@@ -12,12 +12,11 @@ const firebaseConfig = {
     appId: "1:120660951337:web:25bf767fadf75dcb5d3738"
 };
 
-// Inicializa Firebase
+// Init Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Função de registro
 async function registerUser(event) {
     event.preventDefault();
 
@@ -33,10 +32,12 @@ async function registerUser(event) {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
+        const uid = user.uid;
 
-        const userRef = doc(collection(db, "users"));
-        const roleRef = doc(db, "cargo", "3"); // Referência ao cargo "student"
+        const roleRef = doc(db, "cargo", "3"); // Role: Student
 
+        // 📝 Save user using their UID as document ID
+        const userRef = doc(db, "users", uid);
         await setDoc(userRef, {
             email,
             name,
@@ -45,11 +46,12 @@ async function registerUser(event) {
             nationality,
             gender,
             created_at: Timestamp.now(),
-            role: roleRef, // Agora é uma referência
+            role: roleRef,
             phone: ""
         });
 
-        const studentRef = doc(collection(db, "student"));
+        // Create student profile
+        const studentRef = doc(db, "student", uid);
         await setDoc(studentRef, {
             faixa: belt,
             height: "",

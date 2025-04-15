@@ -1,41 +1,98 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+import { getFirestore, doc, getDoc, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
-// 🔐 Configuração do seu projeto Firebase
+// Firebase config
 const firebaseConfig = {
     apiKey: "AIzaSyAvXmhq6Gj75Jbuxqph4rJGmlLz6axXIoc",
     authDomain: "unitybjj-254ce.firebaseapp.com",
     projectId: "unitybjj-254ce",
-    storageBucket: "unitybjj-254ce.firebasestorage.app",
+    storageBucket: "unitybjj-254ce.appspot.com",
     messagingSenderId: "120660951337",
     appId: "1:120660951337:web:25bf767fadf75dcb5d3738",
     measurementId: "G-6ZL2SRMBD5"
 };
 
-// Inicializa o Firebase
+// Init services
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
-// Função de login
 async function loginUser(event) {
-    event.preventDefault();  // Evita o comportamento padrão de submit do formulário
+    event.preventDefault();
 
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
     try {
-        // Faz o login usando o email e senha
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
 
-        // Se o login for bem-sucedido, redireciona para a homepage
-        window.location.href = "GenericHomepage.html";  // Altere para o caminho correto da sua homepage
+        console.log("✅ Logged in UID:", user.uid);
+
+        // Set the login state in localStorage
+        localStorage.setItem('isLoggedIn', 'true');
+
+        // Get user document from 'users' collection
+        const userDocRef = doc(db, "users", user.uid);
+        const userDocSnap = await getDoc(userDocRef);
+
+        if (!userDocSnap.exists()) {
+            alert("User data not found in Firestore.");
+            return;
+        }
+
+        const userData = userDocSnap.data();
+        const roleRef = userData.role;
+
+        if (!roleRef) {
+            alert("User role is not defined.");
+            return;
+        }
+
+        // Get role document
+        const roleSnap = await getDoc(roleRef);
+        if (!roleSnap.exists()) {
+            alert("Role document not found.");
+            return;
+        }
+
+        const roleId = roleRef.path.split('/')[1]; // Extract role ID from path
+
+        // Store basic user information in localStorage
+        localStorage.setItem('userUid', user.uid);
+        localStorage.setItem('name', userData.name || 'User');
+        localStorage.setItem('role', roleId);
+        localStorage.setItem('email', user.email);
+        
+        // If user is a student (role 3), load and store student data
+        if (roleId === "3") {
+            await loadAndStoreStudentData(user.uid);
+            window.location.href = "GenericHomepage.html"; // student page
+        }else if (roleId === "1" || roleId === "2") {
+            window.location.href = "adminStats.html"; // staff or admin
+        } else {
+            alert("Unknown role.");
+        }
 
     } catch (error) {
-        console.error("Erro ao fazer login: ", error.message);
-        alert('Erro: ' + error.message);  // Exibe uma mensagem de erro se o login falhar
+        console.error("❌ Login error:", error.message);
+        alert('Login failed: ' + error.message);
     }
 }
 
-// Adiciona o evento de submit ao formulário de login
+async function loadAndStoreStudentData(userId) {
+    const studentRef = doc(db, "student", userId);  // Use `doc()` to reference a specific document
+    const studentSnap = await getDoc(studentRef);
+
+    if (studentSnap.exists()) {
+        alert("Exists");  // Ensure to display the data properly
+        alert(JSON.stringify(studentSnap.data()));
+        localStorage.setItem("studentData", JSON.stringify(studentSnap.data()));
+    } else {
+        alert("No such student found!");
+    }
+}
+  
+
 document.getElementById("loginForm").addEventListener("submit", loginUser);
