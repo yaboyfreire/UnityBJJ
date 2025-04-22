@@ -70,7 +70,7 @@ async function loginUser(event) {
             await loadAndStoreStudentData(user.uid);
             window.location.href = "GenericHomepage.html"; // student page
         }else if (roleId === "1" || roleId === "2") {
-            window.location.href = "adminStats.html"; // staff or admin
+            window.location.href = "adminHomePage.html"; // staff or admin
         } else {
             alert("Unknown role.");
         }

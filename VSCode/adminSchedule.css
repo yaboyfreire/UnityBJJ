@@ -1,0 +1,512 @@
+/* admin-schedule.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Oswald', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    padding-top: 80px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: #222;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: 80px;
+}
+
+.logo {
+    margin-right: auto;
+}
+
+.menu-list {
+    display: flex;
+    list-style: none;
+    margin-right: auto;
+}
+
+.menu-list li a {
+    color: #b1d4e0;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.menu-list li a.active,
+.menu-list li a:hover {
+    color: #fff;
+    background-color: #e20505;
+    border-radius: 4px;
+}
+
+.admin-controls {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.admin-name {
+    color: #fff;
+    margin-right: 15px;
+    font-weight: 300;
+}
+
+.logout-btn {
+    background-color: #e20505;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #c00404;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.admin-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #222;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.admin-toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.add-class-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.add-class-btn:hover {
+    background-color: #218838;
+}
+
+.view-options {
+    display: flex;
+    gap: 5px;
+}
+
+.view-btn {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.view-btn.active {
+    background-color: #e20505;
+}
+
+.view-btn:hover:not(.active) {
+    background-color: #5a6268;
+}
+
+.search-box {
+    display: flex;
+}
+
+.search-box input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    width: 200px;
+}
+
+.search-box button {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background-color: #5a6268;
+}
+
+.schedule {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.time-column {
+    display: grid;
+    grid-template-rows: 40px repeat(14, 60px);
+    background-color: #343a40;
+    color: white;
+}
+
+.time-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background-color: #222;
+    padding: 10px;
+}
+
+.time-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-bottom: 1px solid #495057;
+    font-size: 14px;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background-color: #495057;
+    color: white;
+}
+
+.day {
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-right: 1px solid #343a40;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(14, 60px);
+    gap: 2px;
+    background-color: #e9ecef;
+    padding: 2px;
+}
+
+.class {
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.class:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.class-info {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.class-attendees {
+    font-size: 11px;
+    color: #6c757d;
+}
+
+.class-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.edit-btn, .delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 2px;
+    color: #6c757d;
+    transition: all 0.2s;
+}
+
+.edit-btn:hover {
+    color: #007bff;
+}
+
+.delete-btn:hover {
+    color: #dc3545;
+}
+
+/* Class type colors */
+.kimono-iniciantes { border-left: 4px solid yellowgreen; }
+.no-gi-iniciantes { border-left: 4px solid purple; }
+.kimono-avancado { border-left: 4px solid green; }
+.no-gi-avancado { border-left: 4px solid red; }
+.kids-kimono { border-left: 4px solid navy; }
+.kids-no-gi { border-left: 4px solid orange; }
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 700px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group select, 
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.cancel-btn, .save-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cancel-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background-color: #5a6268;
+}
+
+.save-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.save-btn:hover {
+    background-color: #218838;
+}
+
+.class-details {
+    margin-bottom: 20px;
+}
+
+.class-details p {
+    margin-bottom: 10px;
+}
+
+.attendees-list {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.attendees-list h3 {
+    margin-bottom: 10px;
+}
+
+.attendees-list ul {
+    list-style: none;
+}
+
+.attendees-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.attendance-status {
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+
+.present {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.absent {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.print-btn {
+    background-color: #17a2b8;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.print-btn:hover {
+    background-color: #138496;
+}
+
+.cancel-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background-color: #5a6268;
+}
+
+.save-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.save-btn:hover {
+    background-color: #218838;
+}
+.schedule {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    grid-template-rows: 40px 1fr;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.time-column {
+    display: grid;
+    grid-template-rows: 40px repeat(14, 60px);
+    background-color: #343a40;
+    color: white;
+    grid-row: 1 / span 2;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background-color: #495057;
+    color: white;
+    grid-column: 2;
+}
+
+@media (max-width: 992px) {
+    .menu-list {
+        display: none;
+    }
+    
+    .hamburger {
+        display: block;
+    }
+    
+    .admin-toolbar {
+        flex-direction: column;
+    }
+    
+    .schedule {
+        grid-template-columns: 80px 1fr;
+    }
+    
+    .time-slot {
+        font-size: 12px;
+    }
+    
+    .class-info {
+        font-size: 10px;
+    }
+}

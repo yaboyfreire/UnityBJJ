@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Admin Schedule</title>
+    <link rel="stylesheet" href="adminSchedule.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+    <header>
+        <nav class="navigation">
+            <div class="logo">
+                <a href="AdminDashboard.html">
+                    <img src="./Images/logo.png" width="100" height="100" />
+                </a>
+            </div>
+            <ul class="menu-list">
+                <li><a href="AdminDashboard.html">Dashboard</a></li>
+                <li><a href="AdminMembers.html">Members</a></li>
+                <li><a href="AdminSchedule.html" class="active">Schedule</a></li>
+                <li><a href="AdminPayments.html">Payments</a></li>
+                <li><a href="AdminReports.html">Reports</a></li>
+            </ul>
+            <div class="admin-controls">
+                <span class="admin-name">Admin User</span>
+                <button class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</button>
+            </div>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="admin-container">
+        <h1>Class Schedule Management</h1>
+        <div class="admin-toolbar">
+            <button class="add-class-btn" onclick="showAddClassModal()">
+                <i class="fas fa-plus"></i> Add Class
+            </button>
+            <div class="view-options">
+                <button class="view-btn active" data-view="all">All Classes</button>
+                <button class="view-btn" data-view="today">Today</button>
+                <button class="view-btn" data-view="week">This Week</button>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Search classes..." />
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+
+        <div class="schedule">
+            <div class="time-column">
+                <div class="time-header">Time</div>
+                <div class="time-slot">08:00-09:00</div>
+                <div class="time-slot">09:00-10:00</div>
+                <div class="time-slot">10:00-11:00</div>
+                <div class="time-slot">11:00-12:00</div>
+                <div class="time-slot">12:00-13:00</div>
+                <div class="time-slot">13:00-14:00</div>
+                <div class="time-slot">14:00-15:00</div>
+                <div class="time-slot">15:00-16:00</div>
+                <div class="time-slot">16:00-17:00</div>
+                <div class="time-slot">17:00-18:00</div>
+                <div class="time-slot">18:00-19:00</div>
+                <div class="time-slot">19:00-20:00</div>
+                <div class="time-slot">20:00-21:00</div>
+                <div class="time-slot">21:00-22:00</div>
+            </div>
+            <div class="days">
+                <div class="day">Monday</div>
+                <div class="day">Tuesday</div>
+                <div class="day">Wednesday</div>
+                <div class="day">Thursday</div>
+                <div class="day">Friday</div>
+                <div class="day">Saturday</div>
+                <div class="day">Sunday</div>
+            </div>
+            <div class="content">
+                <!-- Classes will be dynamically inserted here -->
+                <!-- Example class (you'll generate these dynamically) -->
+                <div class="class kimono-iniciantes" style="grid-column: 1; grid-row: 3 / span 2;">
+                    <div class="class-info">Kimono Iniciantes</div>
+                    <div class="class-attendees">12 attendees</div>
+                    <div class="class-actions">
+                        <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                        <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="adminSchedule.js"></script>
+</body>
+</html>

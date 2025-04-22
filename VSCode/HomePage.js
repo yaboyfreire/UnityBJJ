@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const membershipItem = document.querySelector('.menu-list li:nth-child(2)');
     
     // Check if user is logged in on page load
-    let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    let isLoggedIn = localStorage.getItem('isLoggedIn');
 
     // Create dropdown structure
     const dropdown = document.createElement('div');
