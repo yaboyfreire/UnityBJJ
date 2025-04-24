@@ -1,0 +1,337 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #0f141f;
+    font-family: 'Oswald', sans-serif;
+  }
+  
+  /* ===== NAVIGATION BAR ===== */
+  header .navigation {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    height: 9%;
+    width: 100%;
+    z-index: 10;
+    background: #000000cc;
+  }
+  
+  header .navigation .logo {
+    margin-left: 1%;
+    margin-right: 5%;
+  }
+  
+  header .navigation .logo img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .menu-list {
+    display: flex;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .menu-list li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .menu-list li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 20px;
+    white-space: nowrap;
+    position: relative;
+    color: #b1d4e0;
+    font-size: 1.25rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    transition: color 1s ease, border 1s ease;
+  }
+  
+  .LoginBtn {
+    margin-left: auto;
+    margin-right: 1%;
+    background-color: transparent;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-family: 'Oswald', sans-serif;
+  }
+  
+  .LoginBtn:hover {
+    background-color: #ff0000;
+    cursor: pointer;
+  }
+  
+  .button1 {
+    margin-right: 5%;
+    background-color: #ff0000;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-family: 'Oswald', sans-serif;
+  }
+  
+  .button1:hover {
+    background-color: #db0505;
+    cursor: pointer;
+  }
+  
+  header .navigation .humbarger {
+    margin-right: 20px;
+    display: none;
+  }
+  
+  header .navigation .humbarger .bar {
+    width: 30px;
+    height: 2px;
+    margin: 7px;
+    background: #b1d4e0;
+  }
+  
+  /* Dropdown Styles */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.959);
+    min-width: 220px;
+    width: max-content;
+    z-index: 100;
+    border-radius: 6px;
+    padding: 12px 0;
+    text-align: center;
+  }
+  
+  .dropdown-content a {
+    display: block;
+    padding: 12px 25px;
+    color: #333;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background 0.2s ease;
+  }
+  
+  .dropdown-content a:hover {
+    background: #4d4d4d;
+  }
+  
+  /* ===== MAIN CONTENT ===== */
+  main {
+    flex: 1 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 9%; /* Offset for fixed navbar */
+  }
+  
+  .achievements-section {
+    padding: 60px 20px;
+    background-color: #0f141f;
+    color: #b1d4e0;
+    text-align: center;
+    flex: 1;
+  }
+  
+  .medals-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .medals-title {
+    font-size: 4rem;
+    margin-bottom: 40px;
+    color: #FFD700;
+    text-transform: uppercase;
+  }
+  
+  .medals-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    width: 100%;
+  }
+  
+  .medal-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid #b1d4e033;
+    border-radius: 12px;
+    padding: 30px 20px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .medal-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  }
+  
+  .medal-card img {
+    width: 200px;
+    height:200px;
+    margin-bottom: 20px;
+  }
+  
+  .medal-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: white;
+    text-transform: uppercase;
+  }
+  
+  .medal-card p {
+    font-size: 1rem;
+    color: #ccc;
+  }
+  
+  /* ===== FOOTER ===== */
+  footer {
+    background: black;
+    padding: 30px 10%;
+    width: 100%;
+    flex-shrink: 0;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .footer-section {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+  
+  .footer-section h3 {
+    color: white;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .footer-section p,
+  .footer-section ul li {
+    color: white;
+    font-size: 1em;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #e20505;
+  }
+  
+  .footer-bottom {
+    width: 100%;
+    padding-top: 20px;
+    text-align: center;
+  }
+  
+  .separator {
+    width: 100%;
+    border: none;
+    border-top: 2px solid #e20505;
+    margin: 0;
+  }
+  
+  .footer-bottom p {
+    color: white;
+    font-size: 1em;
+    margin-top: 10px;
+  }
+  
+  .footer-section img {
+    width: 20px;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+  
+  /* ===== RESPONSIVE DESIGN ===== */
+  @media only screen and (max-width: 991px) {
+    header .navigation .menu-list {
+      width: 60%;
+    }
+    header .navigation .menu-list li a {
+      font-size: 1rem;
+    }
+  }
+  
+  @media only screen and (max-width: 767px) {
+    header .navigation .menu-list {
+      position: absolute;
+      top: 9vh;
+      width: 100%;
+      background: rgba(15, 20, 35, 0.99);
+      text-align: center;
+      display: none;
+      flex-direction: column;
+      height: auto;
+    }
+    header .navigation .menu-list li {
+      display: block;
+      height: auto;
+    }
+    header .navigation .menu-list li a {
+      display: block;
+      padding: 20px;
+    }
+    header .navigation .menu-list li a:hover {
+      color: #b1d4e0;
+      padding-left: 30px;
+      background: rgba(177, 212, 224, 0.2);
+    }
+    header .navigation .humbarger {
+      display: block;
+    }
+    .medals-title {
+      font-size: 2.5rem;
+    }
+    .medal-card {
+      width: 80%;
+    }
+  }
