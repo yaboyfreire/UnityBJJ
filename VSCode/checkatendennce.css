@@ -1,0 +1,453 @@
+/* General Reset and Layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding-top: 5rem; /* Adiciona espaço no topo da página */
+}
+
+html,
+body {
+  display: flex;
+  flex-direction: column;
+   background-color: #2d2d2d; /* Fundo cinza escuro */
+}
+
+/* Main content area should grow to take available space */
+main {
+ 
+
+
+  flex-grow: 1;
+}
+/* ====== NAVIGATION MENU STYLES ====== */
+
+
+
+.navigation {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  position: relative;
+}
+
+.menu-list {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu-list li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.menu-list li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 20px;
+  white-space: nowrap;
+  position: relative;
+}
+
+header {
+  position: fixed; /* Posição fixa */
+  top: 0; /* Alinhado ao topo */
+  left: 0; /* Alinhado à esquerda */
+  right: 0; /* Alinhado à direita */
+  z-index: 10; /* Para garantir que fique acima de outros conteúdos */
+  background: rgba(0, 0, 0, 0.8); /* Adicione uma cor de fundo com transparência, se desejar */
+  position: absolute;  /* Fixa a barra no topo */
+    top: 0;  /* Coloca a barra no topo da página */
+    left: 0;  /* Garante que a barra ocupe toda a largura */
+    z-index: 10;  /* Garante que a barra fique acima de outros elementos */
+}
+
+header .navigation {
+  display: flex;
+  align-items: center;
+  height: 100px; /* Altura do cabeçalho */
+  width: 100%; /* Garantindo que ocupe toda a largura */
+}
+
+header .navigation .logo {
+  margin-left: 1%;
+  margin-right: 5%;
+}
+
+header .navigation .logo h1 {
+  color: #b1d4e0;
+  font-size: 30px;
+  line-height: 38px;
+}
+
+header .navigation .menu-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 45%;
+  margin: auto 20px auto 0;
+}
+
+.LoginBtn {
+  margin-left: auto;
+  margin-right: 1%;
+  background-color: #00000000;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.LoginBtn:hover {
+  background-color: #ff0000;
+  cursor: pointer;
+}
+
+.button1 {
+  margin-right: 5%;
+  background-color: #ff0000;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.button1:hover {
+  background-color: #db0505;
+  cursor: pointer;
+}
+
+header .navigation .humbarger {
+  margin-right: 20px;
+  display: none;
+}
+
+header .navigation .humbarger .bar {
+  width: 30px;
+  height: 2px;
+  margin: 7px;
+  background: #b1d4e0;
+}
+
+header .navigation .menu-list li a {
+  color: #b1d4e0;
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 1s ease, border 1s ease;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 0;
+  font-family: 'Oswald', sans-serif;
+}
+  
+  
+.date-picker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  padding: 10px 20px;
+  border-radius: 20px;
+  width: fit-content;
+  margin: 10rem auto 30px auto; /* Aumentei o margin-top para 10rem para mover mais para baixo */
+  font-weight: bold;
+}
+
+.calendar-btn {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.calendar-btn:hover {
+    background-color: #555;
+}
+
+#dateDisplay {
+  color: white; /* Muda a cor do texto para branco */
+  font-size: 18px; /* Ajusta o tamanho da fonte, se necessário */
+  font-weight: bold; /* Adiciona negrito, se desejado */
+}
+
+  .date-picker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 20px;
+    width: fit-content;
+    margin: 5rem auto 30px auto;
+    font-weight: bold;
+  }
+  
+  .date-picker button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+  
+  /* Card styling */
+.card {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #222, #1a1a1a);
+    border-radius: 10px;
+    margin: 1rem;
+    padding: 1rem;
+    gap: 1rem;
+    flex-direction: row;
+    box-shadow: 0 0 10px #000;
+  }
+  
+  .card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+  .card-details {
+    flex: 1;
+  }
+  /* Alteração das cores para as partes específicas do card */
+.card-details h2,
+.card-details p {
+  color: #f5f5f5; /* Cor das letras para todas as partes do card */
+}
+
+/* Para garantir que os textos específicos também fiquem com a cor correta */
+.card-details h2.bruce-lee,
+.card-details p.member-since,
+.card-details p.idade-bruce-wayne,
+.card-details p.contexto,
+.card-details p.junior-contexto {
+  color: #f5f5f5;
+}
+  .card-details h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .card-details p {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  
+  .bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+  }
+  
+ .bar-purple {
+  background-color: #a044ff;
+}
+
+.bar-black {
+  background-color: black;
+}
+
+.bar-white {
+  background-color: white;
+}
+
+
+main {
+  flex-grow: 1;
+  margin-top: 100px; /* Ajuste de acordo com a altura do seu cabeçalho */
+}
+
+
+/* Footer */
+footer {
+    background-color: #020202;
+    padding: 2rem 1rem 1rem 1rem;
+    margin-top: 2rem;
+    font-size: 18px; /* aumenta o tamanho da letra */
+  }
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-section {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Alinha os itens verticalmente dentro de cada seção */
+    justify-content: space-between; /* Garante que os itens fiquem distribuídos de maneira uniforme dentro de cada seção */
+    flex-grow: 1; /* Permite que cada seção cresça para ocupar o espaço disponível */
+    
+}
+.footer-section p, .footer-section a {
+  color: #ccc;
+  font-size: 1.2rem; /* tamanho maior para tudo */
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+}
+
+.footer-section ul li a {
+  font-size: 1.2rem; /* aumenta especificamente os links */
+}
+.footer-section h3 {
+    margin-bottom: 1rem;
+    color: white;
+  }
+  .footer-section p, .footer-section a {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+  }
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Adiciona transição suave ao mudar a cor */
+}
+
+.footer-section ul li a:hover {
+    color: #e20505; /* Altera a cor para vermelho quando o mouse passar por cima */
+
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    color: #999;
+    font-size: 0.8rem;
+  }
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+}
+
+.separator {
+    border: none;
+    border-top: 2px solid red;
+    margin: 1rem 0;
+  }
+
+.footer-bottom p {
+    text-align: center;
+    color: #fff;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+
+/* Ícones do footer */
+.footer-section img {
+    width: 20px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.footer-section a {
+    color: red;
+    text-decoration: none;
+}
+
+/* Barra separadora no footer */
+.footer-bottom {
+    width: 100%;
+    padding-top: 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+}
+
+.separator {
+    width: 100%; /* Garante que a barra ocupe toda a largura */
+    border: none; /* Remove as bordas padrão do <hr> */
+    border-top: 2px solid #e20505; /* Linha vermelha */
+    margin: 0; /* Remove margens automáticas */
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .card {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+  
+    .card-details {
+      width: 100%;
+    }
+  
+    header {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+  
+    .menu-list {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .date-picker {
+      flex-direction: column;
+    }
+  
+    .footer-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  
