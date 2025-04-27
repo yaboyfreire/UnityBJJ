@@ -7,8 +7,9 @@
 }
 
 /* Body */
-html, body {
-    background-color:#020202;
+html,
+body {
+    background-color: #020202;
     color: white;
     overflow-x: hidden;
 }
@@ -16,41 +17,65 @@ html, body {
 
 /* Barra cinza clara mais grossa acima do header */
 .header-bar {
-    width: 100%;  /* Garante que a barra ocupe toda a largura da tela */
-    height: 15px;  /* Aumenta a altura da barra para torná-la mais grossa */
-    background-color: #f5f5f5;  /* Cor cinza claro para a barra */
-    position: absolute;  /* Fixa a barra no topo */
-    top: 0;  /* Coloca a barra no topo da página */
-    left: 0;  /* Garante que a barra ocupe toda a largura */
-    z-index: 10;  /* Garante que a barra fique acima de outros elementos */
+    width: 100%;
+    /* Garante que a barra ocupe toda a largura da tela */
+    height: 15px;
+    /* Aumenta a altura da barra para torná-la mais grossa */
+    background-color: #f5f5f5;
+    /* Cor cinza claro para a barra */
+    position: absolute;
+    /* Fixa a barra no topo */
+    top: 0;
+    /* Coloca a barra no topo da página */
+    left: 0;
+    /* Garante que a barra ocupe toda a largura */
+    z-index: 10;
+    /* Garante que a barra fique acima de outros elementos */
 }
 
 header {
-    position: fixed; /* Posição fixa */
-    top: 0; /* Alinhado ao topo */
-    left: 0; /* Alinhado à esquerda */
-    right: 0; /* Alinhado à direita */
-    z-index: 10; /* Para garantir que fique acima de outros conteúdos */
-    background: rgba(0, 0, 0, 0.8); /* Adicione uma cor de fundo com transparência, se desejar */
-    position: absolute;  /* Fixa a barra no topo */
-      top: 0;  /* Coloca a barra no topo da página */
-      left: 0;  /* Garante que a barra ocupe toda a largura */
-      z-index: 10;  /* Garante que a barra fique acima de outros elementos */
+    position: fixed;
+    /* Posição fixa */
+    top: 0;
+    /* Alinhado ao topo */
+    left: 0;
+    /* Alinhado à esquerda */
+    right: 0;
+    /* Alinhado à direita */
+    z-index: 10;
+    /* Para garantir que fique acima de outros conteúdos */
+    background: rgba(0, 0, 0, 0.8);
+    /* Adicione uma cor de fundo com transparência, se desejar */
+    position: absolute;
+    /* Fixa a barra no topo */
+    top: 0;
+    /* Coloca a barra no topo da página */
+    left: 0;
+    /* Garante que a barra ocupe toda a largura */
+    z-index: 10;
+    /* Garante que a barra fique acima de outros elementos */
+}
+
+.menu-list li:not(.dropdown-active):hover > a {
+    background: rgba(0,0,0,0.03);
   }
   
   header .navigation {
     display: flex;
     align-items: center;
-    height: 100px; /* Altura do cabeçalho */
-    width: 100%; /* Garantindo que ocupe toda a largura */
+    position: fixed;
+    height:9%;
+    min-width: 100%;
+    z-index: 10;
+    background: #000000cc;
   }
   
-  header .navigation .logo {
+  header .navigation .logo{
     margin-left: 1%;
-    margin-right: 5%;
+    margin-right:5%;
   }
   
-  header .navigation .logo h1 {
+  header .navigation .logo h1{
     color: #b1d4e0;
     font-size: 30px;
     line-height: 38px;
@@ -65,10 +90,11 @@ header {
     margin: auto 20px auto 0;
   }
   
-  .LoginBtn {
-    margin-left: auto;
-    margin-right: 1%;
-    background-color: #00000000;
+  .LoginBtn{
+    
+    margin-left:auto;
+    margin-right:1%;
+    background-color: #00000000; 
     border: none;
     color: white;
     padding: 15px 30px;
@@ -81,12 +107,12 @@ header {
   
   .LoginBtn:hover {
     background-color: #ff0000;
-    cursor: pointer;
+    cursor:pointer;
   }
+  .button1{
   
-  .button1 {
-    margin-right: 5%;
-    background-color: #ff0000;
+    margin-right:5%;
+    background-color: #ff0000; 
     border: none;
     color: white;
     padding: 15px 30px;
@@ -96,23 +122,22 @@ header {
     font-size: 16px;
     font-family: 'Oswald', sans-serif;
   }
-  
   .button1:hover {
+    
     background-color: #db0505;
-    cursor: pointer;
+    cursor:pointer;
   }
-  
   header .navigation .humbarger {
     margin-right: 20px;
     display: none;
-  }
-  
-  header .navigation .humbarger .bar {
+   }
+   
+  header .navigation .humbarger .bar{
     width: 30px;
     height: 2px;
     margin: 7px;
     background: #b1d4e0;
-  }
+   }
   
   header .navigation .menu-list li a {
     color: #b1d4e0;
@@ -124,11 +149,12 @@ header {
     text-decoration: none;
     display: flex;
     justify-content: space-between;
-    flex-grow: 0;
+    flex-grow: 0; /* Prevent menu items from growing */
     font-family: 'Oswald', sans-serif;
   }
+  
 
-  .hero {
+.hero {
     background: url('./images/Landing\ Page\ (1).png') no-repeat center;
     background-size: cover;
     padding: 300px 10%;
@@ -137,45 +163,63 @@ header {
     align-items: center;
     text-align: left;
     padding-left: 15%;
-    margin-top: 120px; /* Header height (100px) + extra space (20px) */
+    margin-top: 120px;
+    /* Header height (100px) + extra space (20px) */
 }
+
 .hero-content {
     padding: 20px;
     max-width: 400px;
-    margin-left: 10%; /* Ajusta para que o conteúdo não fique centralizado */
+    margin-left: 10%;
+    /* Ajusta para que o conteúdo não fique centralizado */
 }
 
 .hero h1 {
-    font-size: 2.4em; /* Ajusta o tamanho do texto para o tamanho solicitado */
+    font-size: 2.4em;
+    /* Ajusta o tamanho do texto para o tamanho solicitado */
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Alinha as linhas à esquerda */
-    white-space: nowrap; /* Garante que o "JOIN UNITY BJJ" não quebre */
-    line-height: 0.5; /* Reduz o espaçamento entre as linhas */
-    margin: 0; /* Remove qualquer margem adicional */
+    align-items: flex-start;
+    /* Alinha as linhas à esquerda */
+    white-space: nowrap;
+    /* Garante que o "JOIN UNITY BJJ" não quebre */
+    line-height: 0.5;
+    /* Reduz o espaçamento entre as linhas */
+    margin: 0;
+    /* Remove qualquer margem adicional */
 }
 
 .hero h1 span {
     font-weight: bold;
     line-height: 1.4;
-    display: block; /* Faz com que cada span ocupe uma linha */
+    display: block;
+    /* Faz com que cada span ocupe uma linha */
 }
 
 .line1 {
-    margin-bottom: 10px; /* Espaço entre a primeira e a segunda linha */
-    color: #e20505; /* Cor vermelha para "JOIN UNITY BJJ" */
-    white-space: nowrap; /* Garante que "JOIN UNITY BJJ" ocupe uma única linha */
-    width: 100%; /* Garantir que o texto ocupe o espaço inteiro disponível */
+    margin-bottom: 10px;
+    /* Espaço entre a primeira e a segunda linha */
+    color: #e20505;
+    /* Cor vermelha para "JOIN UNITY BJJ" */
+    white-space: nowrap;
+    /* Garante que "JOIN UNITY BJJ" ocupe uma única linha */
+    width: 100%;
+    /* Garantir que o texto ocupe o espaço inteiro disponível */
 }
+
 .line2 {
-    margin-left: -65px; /* Desloca a segunda linha para a direita */
-    color: #F5F5F5; /* Cor para LEARN SELF DEFENSE, */
+    margin-left: -65px;
+    /* Desloca a segunda linha para a direita */
+    color: #F5F5F5;
+    /* Cor para LEARN SELF DEFENSE, */
 }
 
 .line3 {
-    margin-left: -100px; /* Desloca ainda mais a terceira linha para criar o efeito de escada */
-    color: #F5F5F5; /* Cor para MASTER THE GENTLE ART */
+    margin-left: -100px;
+    /* Desloca ainda mais a terceira linha para criar o efeito de escada */
+    color: #F5F5F5;
+    /* Cor para MASTER THE GENTLE ART */
 }
 
 .cta-btn {
@@ -187,9 +231,11 @@ header {
     display: inline-block;
     border: none;
     cursor: pointer;
-    font-size: 1.4em; /* Tamanho adequado do botão */
+    font-size: 1.4em;
+    /* Tamanho adequado do botão */
     border-radius: 5px;
-    margin-left: 50px; /* Empurra o botão para a direita */
+    margin-left: 50px;
+    /* Empurra o botão para a direita */
 }
 
 .cta-btn {
@@ -201,7 +247,8 @@ header {
     display: inline-block;
     border: none;
     cursor: pointer;
-    font-size: 1.4em; /* Tamanho adequado do botão */
+    font-size: 1.4em;
+    /* Tamanho adequado do botão */
     border-radius: 5px;
 }
 
@@ -256,39 +303,50 @@ header {
 }
 
 .founder-content {
-    background: rgba(0, 0, 0, 0.7); /* Increased opacity for better readability */
+    background: rgba(0, 0, 0, 0.7);
+    /* Increased opacity for better readability */
     padding: 30px;
     border-radius: 10px;
     display: flex;
-    align-items: center; /* Center align items */
-    max-width: 800px; /* Max width for better layout */
+    align-items: center;
+    /* Center align items */
+    max-width: 800px;
+    /* Max width for better layout */
 }
 
 .founder-image {
-    margin-right: 20px; /* Space between image and text */
+    margin-right: 20px;
+    /* Space between image and text */
 }
 
 .founder-image img {
-    width: 250px; /* Ensure the image stays within a reasonable size */
+    width: 250px;
+    /* Ensure the image stays within a reasonable size */
     height: auto;
     border-radius: 5px;
 }
 
 .founder-text {
-    font-size: 1.5em; /* Consistent text size */
-    line-height: 1.4; /* Adjusted for better readability */
-    text-align: left; /* Align text to the left */
+    font-size: 1.5em;
+    /* Consistent text size */
+    line-height: 1.4;
+    /* Adjusted for better readability */
+    text-align: left;
+    /* Align text to the left */
     color: #ffffff;
     font-weight: 400;
-    max-width: 600px; /* Limit max width for better fit */
+    max-width: 600px;
+    /* Limit max width for better fit */
 }
-  /* Footer */
-  footer {
+
+/* Footer */
+footer {
     background-color: #020202;
     padding: 2rem 1rem 1rem 1rem;
     margin-top: 2rem;
-    font-size: 18px; /* aumenta o tamanho da letra */
-  }
+    font-size: 18px;
+    /* aumenta o tamanho da letra */
+}
 
 .footer-container {
     display: flex;
@@ -300,31 +358,41 @@ header {
 .footer-section {
     margin-bottom: 20px;
     display: flex;
-    flex-direction: column; /* Alinha os itens verticalmente dentro de cada seção */
-    justify-content: space-between; /* Garante que os itens fiquem distribuídos de maneira uniforme dentro de cada seção */
-    flex-grow: 1; /* Permite que cada seção cresça para ocupar o espaço disponível */
-    
+    flex-direction: column;
+    /* Alinha os itens verticalmente dentro de cada seção */
+    justify-content: space-between;
+    /* Garante que os itens fiquem distribuídos de maneira uniforme dentro de cada seção */
+    flex-grow: 1;
+    /* Permite que cada seção cresça para ocupar o espaço disponível */
+
 }
-.footer-section p, .footer-section a {
-  color: #ccc;
-  font-size: 1.2rem; /* tamanho maior para tudo */
-  margin-bottom: 0.5rem;
-  text-decoration: none;
+
+.footer-section p,
+.footer-section a {
+    color: #ccc;
+    font-size: 1.2rem;
+    /* tamanho maior para tudo */
+    margin-bottom: 0.5rem;
+    text-decoration: none;
 }
 
 .footer-section ul li a {
-  font-size: 1.2rem; /* aumenta especificamente os links */
+    font-size: 1.2rem;
+    /* aumenta especificamente os links */
 }
+
 .footer-section h3 {
     margin-bottom: 1rem;
     color: white;
-  }
-  .footer-section p, .footer-section a {
+}
+
+.footer-section p,
+.footer-section a {
     color: #ccc;
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
     text-decoration: none;
-  }
+}
 
 .footer-section ul {
     list-style: none;
@@ -334,11 +402,13 @@ header {
 .footer-section ul li a {
     color: white;
     text-decoration: none;
-    transition: color 0.3s ease; /* Adiciona transição suave ao mudar a cor */
+    transition: color 0.3s ease;
+    /* Adiciona transição suave ao mudar a cor */
 }
 
 .footer-section ul li a:hover {
-    color: #e20505; /* Altera a cor para vermelho quando o mouse passar por cima */
+    color: #e20505;
+    /* Altera a cor para vermelho quando o mouse passar por cima */
 
 }
 
@@ -347,7 +417,7 @@ header {
     margin-top: 2rem;
     color: #999;
     font-size: 0.8rem;
-  }
+}
 
 .footer-container {
     display: flex;
@@ -360,7 +430,7 @@ header {
     border: none;
     border-top: 2px solid red;
     margin: 1rem 0;
-  }
+}
 
 .footer-bottom p {
     text-align: center;
@@ -396,10 +466,14 @@ header {
 }
 
 .separator {
-    width: 100%; /* Garante que a barra ocupe toda a largura */
-    border: none; /* Remove as bordas padrão do <hr> */
-    border-top: 2px solid #e20505; /* Linha vermelha */
-    margin: 0; /* Remove margens automáticas */
+    width: 100%;
+    /* Garante que a barra ocupe toda a largura */
+    border: none;
+    /* Remove as bordas padrão do <hr> */
+    border-top: 2px solid #e20505;
+    /* Linha vermelha */
+    margin: 0;
+    /* Remove margens automáticas */
 }
 
 

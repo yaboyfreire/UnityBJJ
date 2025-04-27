@@ -6,7 +6,8 @@
 }
 
 body {
-  padding-top: 5rem; /* Adiciona espaÃ§o no topo da pÃĄgina */
+  padding-top: 5rem;
+  /* Adiciona espaÃ§o no topo da pÃĄgina */
 }
 
 
@@ -14,16 +15,18 @@ html,
 body {
   display: flex;
   flex-direction: column;
-   background-color: #2d2d2d; /* Fundo cinza escuro */
+  background-color: #2d2d2d;
+  /* Fundo cinza escuro */
 }
 
 /* Main content area should grow to take available space */
 main {
- 
+
 
 
   flex-grow: 1;
 }
+
 /* ====== NAVIGATION MENU STYLES ====== */
 
 .navigation {
@@ -59,31 +62,88 @@ main {
 }
 
 header {
-  position: fixed; /* PosiÃ§ÃĢo fixa */
-  top: 0; /* Alinhado ao topo */
-  left: 0; /* Alinhado Ã  esquerda */
-  right: 0; /* Alinhado Ã  direita */
-  z-index: 10; /* Para garantir que fique acima de outros conteÃšdos */
-  background: rgba(0, 0, 0, 0.8); /* Adicione uma cor de fundo com transparÃŠncia, se desejar */
-  position: absolute;  /* Fixa a barra no topo */
-    top: 0;  /* Coloca a barra no topo da pÃĄgina */
-    left: 0;  /* Garante que a barra ocupe toda a largura */
-    z-index: 10;  /* Garante que a barra fique acima de outros elementos */
+  position: fixed;
+  /* PosiÃ§ÃĢo fixa */
+  top: 0;
+  /* Alinhado ao topo */
+  left: 0;
+  /* Alinhado Ã  esquerda */
+  right: 0;
+  /* Alinhado Ã  direita */
+  z-index: 10;
+  /* Para garantir que fique acima de outros conteÃšdos */
+  background: rgba(0, 0, 0, 0.8);
+  /* Adicione uma cor de fundo com transparÃŠncia, se desejar */
+  position: absolute;
+  /* Fixa a barra no topo */
+  top: 0;
+  /* Coloca a barra no topo da pÃĄgina */
+  left: 0;
+  /* Garante que a barra ocupe toda a largura */
+  z-index: 10;
+  /* Garante que a barra fique acima de outros elementos */
+}
+
+.header-bar {
+  width: 100%;
+  /* Garante que a barra ocupe toda a largura da tela */
+  height: 15px;
+  /* Aumenta a altura da barra para torná-la mais grossa */
+  background-color: #f5f5f5;
+  /* Cor cinza claro para a barra */
+  position: absolute;
+  /* Fixa a barra no topo */
+  top: 0;
+  /* Coloca a barra no topo da página */
+  left: 0;
+  /* Garante que a barra ocupe toda a largura */
+  z-index: 10;
+  /* Garante que a barra fique acima de outros elementos */
+}
+
+header {
+  position: fixed;
+  /* Posição fixa */
+  top: 0;
+  /* Alinhado ao topo */
+  left: 0;
+  /* Alinhado à esquerda */
+  right: 0;
+  /* Alinhado à direita */
+  z-index: 10;
+  /* Para garantir que fique acima de outros conteúdos */
+  background: rgba(0, 0, 0, 0.8);
+  /* Adicione uma cor de fundo com transparência, se desejar */
+  position: absolute;
+  /* Fixa a barra no topo */
+  top: 0;
+  /* Coloca a barra no topo da página */
+  left: 0;
+  /* Garante que a barra ocupe toda a largura */
+  z-index: 10;
+  /* Garante que a barra fique acima de outros elementos */
+}
+
+.menu-list li:not(.dropdown-active):hover > a {
+  background: rgba(0,0,0,0.03);
 }
 
 header .navigation {
   display: flex;
   align-items: center;
-  height: 100px; /* Altura do cabeÃ§alho */
-  width: 100%; /* Garantindo que ocupe toda a largura */
+  position: fixed;
+  height:9%;
+  min-width: 100%;
+  z-index: 10;
+  background: #000000cc;
 }
 
-header .navigation .logo {
+header .navigation .logo{
   margin-left: 1%;
-  margin-right: 5%;
+  margin-right:5%;
 }
 
-header .navigation .logo h1 {
+header .navigation .logo h1{
   color: #b1d4e0;
   font-size: 30px;
   line-height: 38px;
@@ -97,93 +157,55 @@ header .navigation .menu-list {
   width: 45%;
   margin: auto 20px auto 0;
 }
-/* Profile Header Styles */
-.profile-header {
-margin-left: auto;
-margin-right: 1%;
-display: flex;
-align-items: center;
-position: relative; /* For positioning the dropdown */
+
+.LoginBtn{
+  
+  margin-left:auto;
+  margin-right:1%;
+  background-color: #00000000; 
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'Oswald', sans-serif;
 }
 
-.profile-content {
-display: flex;
-align-items: center;
-gap: 10px;
-cursor: pointer; /* Indicate it's clickable/hoverable */
+.LoginBtn:hover {
+  background-color: #ff0000;
+  cursor:pointer;
 }
+.button1{
 
-.profile-header-img {
-width: 40px;
-height: 40px;
-border-radius: 50%;
-object-fit: cover;
+  margin-right:5%;
+  background-color: #ff0000; 
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'Oswald', sans-serif;
 }
-
-.profile-name {
-color: #b1d4e0;
-font-size: 1rem;
-font-family: 'Oswald', sans-serif;
-text-transform: uppercase;
+.button1:hover {
+  
+  background-color: #db0505;
+  cursor:pointer;
 }
-
-/* Dropdown Styles */
-.profile-dropdown {
-position: absolute;
-top: 100%; /* Position below the profile */
-right: 0;
-background: rgba(0, 0, 0, 0.9); /* Dark background with slight transparency */
-border-radius: 5px;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-opacity: 0; /* Hidden by default */
-visibility: hidden; /* Hidden by default */
-transition: opacity 0.3s ease, visibility 0.3s ease;
-z-index: 20; /* Ensure it appears above other elements */
-}
-
-.dropdown-menu {
-list-style: none;
-margin: 0;
-padding: 10px 0;
-min-width: 150px; /* Ensure the dropdown has enough width */
-}
-
-.dropdown-menu li {
-margin: 0;
-}
-
-.dropdown-menu li a {
-display: block;
-padding: 10px 20px;
-color: #b1d4e0;
-font-family: 'Oswald', sans-serif;
-font-size: 1rem;
-text-decoration: none;
-text-transform: uppercase;
-transition: background 0.3s ease;
-}
-
-.dropdown-menu li a:hover {
-background-color: #ff0000; /* Red background on hover */
-}
-
-/* Show dropdown on hover */
-.profile-header:hover .profile-dropdown {
-opacity: 1;
-visibility: visible;
-}
-
 header .navigation .humbarger {
   margin-right: 20px;
   display: none;
-}
-
-header .navigation .humbarger .bar {
+ }
+ 
+header .navigation .humbarger .bar{
   width: 30px;
   height: 2px;
   margin: 7px;
   background: #b1d4e0;
-}
+ }
 
 header .navigation .menu-list li a {
   color: #b1d4e0;
@@ -195,95 +217,110 @@ header .navigation .menu-list li a {
   text-decoration: none;
   display: flex;
   justify-content: space-between;
-  flex-grow: 0;
+  flex-grow: 0; /* Prevent menu items from growing */
   font-family: 'Oswald', sans-serif;
 }
-   /* ====== Profile Section Styles ====== */
-   
-   .profile-section {
-    margin-top: 65px;
-    background-color: #2b2b2b;
-    padding: 30px;
-    display: grid;
-    gap: 20px;
-   }
-   
-   .profile-card {
-    display: flex;
-    align-items: center;
-    background-color: #1a1a1a;
-    color: white;
-    padding: 30px;
-    border-radius: 10px;
-    position: relative;
-    flex-wrap: wrap;
-   }
-   
-   .profile-img {
-    width: 120px;
-    height: 120px;
-    border-radius: 5px;
-    margin-right: 30px;
-    object-fit: cover;
-   }
-   
-   .profile-info {
-    flex: 1;
-   }
-   
-   .profile-info h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-    font-family: 'Oswald', sans-serif;
-   }
-   
-   .profile-info p {
-    font-size: 1.25rem;
-    margin: 4px 0;
-    font-family: 'Oswald', sans-serif;
-   }
-   
-   .belt {
-    position: relative;
-    height: 16px;
-    margin-top: 20px;
-    width: 100%;
-    background-color: #a020f0;
-   }
-   .purple-belt {
-    flex: 8.5;
-    background-color: #a020f0;
-    margin-right: -5%;
-   }
-   
-   .black-tip {
-    position: absolute;
-    right: 5%;
-    width: 20%;
-    height: 100%;
-    background-color: black;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 5px;
-    gap: 5px;
-   }
-   
-   .stripe {
-    width: 4px;
-    height: 100%;
-    background-color: white;
-   }
-   
+
+/* ====== Profile Section Styles ====== */
+
+.profile-section {
+  margin-top: 65px;
+  background-color: #2b2b2b;
+  padding: 30px;
+  display: grid;
+  gap: 20px;
+}
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  background-color: #1a1a1a;
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 5px;
+  margin-right: 30px;
+  object-fit: cover;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-info h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.profile-info p {
+  font-size: 1.25rem;
+  margin: 4px 0;
+  font-family: 'Oswald', sans-serif;
+}
+
+.belt-divider {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.belt {
+  position: relative;
+  /* Needed for absolute positioning */
+  height: 16px;
+  margin-top: 20px;
+  width: 100%;
+  background-color: #a020f0;
+  /* Purple background for entire belt */
+}
+
+.purple-belt {
+  flex: 8.5;
+  background-color: #a020f0;
+  margin-right: -5%;
+  /* Allows black to overlap */
+}
+
+.black-tip {
+  position: absolute;
+  right: 5%;
+  /* Leaves 5% purple at the end */
+  width: 20%;
+  /* Width of black tip - adjust as needed */
+  height: 100%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 5px;
+  gap: 5px;
+}
+
+.stripe {
+  width: 4px;
+  height: 100%;
+  background-color: white;
+}
+
+
 
 
 /* Achievements Section */
 .achievements {
-  background: #1a1a1a; /* Solid dark background */
+  background: #1a1a1a;
+  /* Solid dark background */
   border-radius: 10px;
   margin: 1rem 0;
-  padding: 1rem 1rem 2rem 1rem; /* Increased bottom padding for more vertical space */
+  padding: 1rem 1rem 2rem 1rem;
+  /* Increased bottom padding for more vertical space */
   box-shadow: 0 0 10px #000;
   width: 100%;
 }
@@ -302,7 +339,8 @@ header .navigation .menu-list li a {
   font-size: 1.2rem;
   color: #f5f5f5;
   font-family: 'Oswald', sans-serif;
-  margin-bottom: 1.5rem; /* Added margin-bottom for extra space below the item */
+  margin-bottom: 1.5rem;
+  /* Added margin-bottom for extra space below the item */
 }
 
 .achievement-item .icon {
@@ -314,7 +352,8 @@ header .navigation .menu-list li a {
   background: #1a1a1a;
   border-radius: 10px;
   margin: 0.5rem 0;
-  padding: 1rem 1rem 2rem 1rem; /* Increased bottom padding for more vertical space */
+  padding: 1rem 1rem 2rem 1rem;
+  /* Increased bottom padding for more vertical space */
   box-shadow: 0 0 10px #000;
   width: 100%;
 }
@@ -330,14 +369,16 @@ header .navigation .menu-list li a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem; /* Increased spacing below each item */
+  margin-bottom: 1.5rem;
+  /* Increased spacing below each item */
   font-size: 1.2rem;
   color: #f5f5f5;
   font-family: 'Oswald', sans-serif;
 }
 
 .competition-item:last-child {
-  margin-bottom: 1.5rem; /* Ensure the last item also has space below */
+  margin-bottom: 1.5rem;
+  /* Ensure the last item also has space below */
 }
 
 .competition-item span:first-child {
@@ -417,7 +458,8 @@ header .navigation .menu-list li a {
   text-align: center;
   min-width: 150px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer; /* Indica que é clicável */
+  cursor: pointer;
+  /* Indica que é clicável */
 }
 
 .leader-card:hover {
@@ -472,8 +514,13 @@ header .navigation .menu-list li a {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .popup-content-rankings {
@@ -605,57 +652,7 @@ header .navigation .menu-list li a {
 }
 
 /* Belt Styles */
-.belt {
-  position: relative;
-  height: 18px;
-  margin: 0.5rem 0;
-  width: 100%;
-  border-radius: 5px;
-  display: flex;
-  overflow: hidden;
-  background-color: transparent; /* Garante que o fundo do .belt não interfira */
-}
 
-.purple-belt {
-  flex: 1;
-  height: 100%;
-  background-color: #a020f0;
-  border-radius: 5px 0 0 5px;
-}
-
-.white-belt {
-  flex: 1;
-  height: 100%;
-  background-color: #ffffff;
-  border-radius: 5px 0 0 5px;
-  position: relative;
-}
-
-/* Adiciona uma continuação branca após o black-tip para Júnior */
-.ranking-card[data-belt="white"] .belt::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  width: 20%; /* Mesmo tamanho do black-tip */
-  height: 100%;
-  background-color: #ffffff; /* Continuação branca */
-  border-radius: 0 5px 5px 0;
-  z-index: 1; /* Abaixo do black-tip */
-}
-
-.black-tip {
-  position: relative;
-  width: 20%;
-  height: 100%;
-  background-color: black;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 3px;
-  gap: 3px;
-  border-radius: 0 5px 5px 0;
-  z-index: 2; /* Acima da continuação branca */
-}
 
 .stripe {
   width: 3px;
@@ -664,7 +661,8 @@ header .navigation .menu-list li a {
 }
 
 .stripe.thick-stripe {
-  width: 6px; /* Linha mais grossa para Júnior */
+  width: 6px;
+  /* Linha mais grossa para Júnior */
 }
 
 /* Selo "Você" */
@@ -744,7 +742,8 @@ header .navigation .menu-list li a {
   margin-top: 1rem;
 }
 
-.history-table th, .history-table td {
+.history-table th,
+.history-table td {
   padding: 0.8rem;
   text-align: left;
   border-bottom: 1px solid #444;
@@ -760,52 +759,53 @@ header .navigation .menu-list li a {
 /* Responsive Design */
 @media (max-width: 768px) {
   .popup-content-rankings {
-      max-width: 95%;
-      max-height: 550px;
+    max-width: 95%;
+    max-height: 550px;
   }
 
   .rankings-grid {
-      gap: 2rem;
-      justify-content: flex-start;
+    gap: 2rem;
+    justify-content: flex-start;
   }
 
   .ranking-card {
-      min-width: 200px;
-      max-width: 220px;
+    min-width: 200px;
+    max-width: 220px;
   }
 
   .ranking-img {
-      width: 60px;
-      height: 60px;
+    width: 60px;
+    height: 60px;
   }
 
   .ranking-card h4 {
-      font-size: 1.2rem;
+    font-size: 1.2rem;
   }
 
   .ranking-position {
-      font-size: 1rem;
+    font-size: 1rem;
   }
 
   .ranking-points {
-      font-size: 0.9rem;
+    font-size: 0.9rem;
   }
 
   .belt {
-      height: 16px;
+    height: 16px;
   }
 
   .progress-bar {
-      height: 8px;
+    height: 8px;
   }
 
   .history-btn {
-      font-size: 0.9rem;
-      padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
   }
 
   .ranking-card[data-belt="white"] .belt::after {
-      width: 20%; /* Mantém a proporção no mobile */
+    width: 20%;
+    /* Mantém a proporção no mobile */
   }
 }
 
@@ -814,61 +814,79 @@ header .navigation .menu-list li a {
   animation: slideIn 0.5s ease forwards;
 }
 
-.ranking-card:nth-child(1) { animation-delay: 0.1s; }
-.ranking-card:nth-child(2) { animation-delay: 0.2s; }
-.ranking-card:nth-child(3) { animation-delay: 0.3s; }
+.ranking-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.ranking-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.ranking-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
 
 @keyframes slideIn {
-  from { transform: translateX(-20px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
+
 .popup-content-rankings {
   box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
 }
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .popup-content-rankings {
-      max-width: 95%;
-      max-height: 450px;
+    max-width: 95%;
+    max-height: 450px;
   }
 
   .rankings-grid {
-      gap: 2rem; /* Espaçamento reduzido para mobile, mas ainda maior que antes */
+    gap: 2rem;
+    /* Espaçamento reduzido para mobile, mas ainda maior que antes */
   }
 
   .ranking-card {
-      min-width: 200px;
-      max-width: 220px;
+    min-width: 200px;
+    max-width: 220px;
   }
 
   .ranking-img {
-      width: 60px;
-      height: 60px;
+    width: 60px;
+    height: 60px;
   }
 
   .ranking-card h4 {
-      font-size: 1.2rem;
+    font-size: 1.2rem;
   }
 
   .ranking-position {
-      font-size: 1rem;
+    font-size: 1rem;
   }
 
   .ranking-points {
-      font-size: 0.9rem;
+    font-size: 0.9rem;
   }
 
   .belt {
-      height: 16px;
+    height: 16px;
   }
 
   .progress-bar {
-      height: 8px;
+    height: 8px;
   }
 
   .history-btn {
-      font-size: 0.9rem;
-      padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
   }
 }
 
@@ -890,14 +908,16 @@ header .navigation .menu-list li a {
   background: linear-gradient(135deg, #222, #1a1a1a);
   border-radius: 10px;
   margin: 1rem 0;
-  padding: 2rem; /* Increased padding */
+  padding: 2rem;
+  /* Increased padding */
   box-shadow: 0 0 10px #000;
   width: 100%;
 }
 
 .graduations h2 {
   color: #f5f5f5;
-  font-size: 2.5rem; /* Increased font size for header */
+  font-size: 2.5rem;
+  /* Increased font size for header */
   margin-bottom: 1.5rem;
   font-family: 'Oswald', sans-serif;
 }
@@ -906,26 +926,32 @@ header .navigation .menu-list li a {
   display: flex;
   justify-content: space-between;
   position: relative;
-  height: 150px; /* Increased height for larger bars */
+  height: 150px;
+  /* Increased height for larger bars */
   width: 100%;
   align-items: center;
 }
 
 .level {
-  width: 20px; /* Increased width of each bar */
-  height: 80px; /* Increased height of each bar */
+  width: 20px;
+  /* Increased width of each bar */
+  height: 80px;
+  /* Increased height of each bar */
   background-color: #fff;
-  border-radius: 5px; /* Larger rounded edges */
+  border-radius: 5px;
+  /* Larger rounded edges */
   z-index: 1;
 }
 
 /* Alternating positions for the bars */
 .level:nth-child(odd) {
-  margin-top: 40px; /* Increased margin for larger scale */
+  margin-top: 40px;
+  /* Increased margin for larger scale */
 }
 
 .level:nth-child(even) {
-  margin-top: -40px; /* Increased margin for larger scale */
+  margin-top: -40px;
+  /* Increased margin for larger scale */
 }
 
 /* Horizontal line running through the bars */
@@ -935,7 +961,8 @@ header .navigation .menu-list li a {
   top: 50%;
   left: 0;
   right: 0;
-  height: 4px; /* Thicker line for larger scale */
+  height: 4px;
+  /* Thicker line for larger scale */
   background-color: #000;
   z-index: 0;
 }
@@ -956,10 +983,12 @@ header .navigation .menu-list li a {
   align-items: center;
   z-index: 100;
 }
+
 /* Prevent scrolling when popup is open */
 body.no-scroll {
   overflow: hidden;
-  height: 100vh; /* Ensure the body doesn't expand */
+  height: 100vh;
+  /* Ensure the body doesn't expand */
 }
 
 .popup-content {
@@ -1031,7 +1060,8 @@ body.no-scroll {
 }
 
 .popup-content {
-  position: relative; /* IMPORTANTE! Para o X posicionar corretamente */
+  position: relative;
+  /* IMPORTANTE! Para o X posicionar corretamente */
   background-color: #1b1b1b;
   padding: 30px;
   border-radius: 15px;
@@ -1067,14 +1097,16 @@ body.no-scroll {
   background: linear-gradient(135deg, #222, #1a1a1a);
   border-radius: 10px;
   margin: 1rem 0;
-  padding: 2rem; /* Increased padding */
+  padding: 2rem;
+  /* Increased padding */
   box-shadow: 0 0 10px #000;
   width: 100%;
 }
 
 .graduations h2 {
   color: #f5f5f5;
-  font-size: 2.5rem; /* Increased font size for header */
+  font-size: 2.5rem;
+  /* Increased font size for header */
   margin-bottom: 1.5rem;
   font-family: 'Oswald', sans-serif;
 }
@@ -1083,18 +1115,23 @@ body.no-scroll {
   display: flex;
   justify-content: space-between;
   position: relative;
-  height: 150px; /* Increased height for larger bars */
+  height: 150px;
+  /* Increased height for larger bars */
   width: 100%;
   align-items: center;
 }
 
 .level {
-  width: 20px; /* Increased width of each bar */
-  height: 80px; /* Increased height of each bar */
+  width: 20px;
+  /* Increased width of each bar */
+  height: 80px;
+  /* Increased height of each bar */
   background-color: #fff;
-  border-radius: 5px; /* Larger rounded edges */
+  border-radius: 5px;
+  /* Larger rounded edges */
   z-index: 1;
 }
+
 .level-wrapper {
   display: flex;
   flex-direction: column;
@@ -1103,27 +1140,32 @@ body.no-scroll {
 
 .level-date {
   font-size: 0.7rem;
-  color: white; /* <- branco como pediste */
+  color: white;
+  /* <- branco como pediste */
   margin-top: 0.4rem;
 }
 
 /* Abaixar só a primeira barra */
 .first-level {
-  margin-top: 10px; /* Ajusta aqui a distância para baixo */
+  margin-top: 10px;
+  /* Ajusta aqui a distância para baixo */
 }
 
 /* Abaixar só a primeira barra */
 .first-level {
-  margin-top: 10px; /* Ajusta aqui a distância para baixo */
+  margin-top: 10px;
+  /* Ajusta aqui a distância para baixo */
 }
 
 /* Alternating positions for the bars */
 .level:nth-child(odd) {
-  margin-top: 40px; /* Increased margin for larger scale */
+  margin-top: 40px;
+  /* Increased margin for larger scale */
 }
 
 .level:nth-child(even) {
-  margin-top: -40px; /* Increased margin for larger scale */
+  margin-top: -40px;
+  /* Increased margin for larger scale */
 }
 
 /* Horizontal line running through the bars */
@@ -1133,7 +1175,8 @@ body.no-scroll {
   top: 50%;
   left: 0;
   right: 0;
-  height: 4px; /* Thicker line for larger scale */
+  height: 4px;
+  /* Thicker line for larger scale */
   background-color: #000;
   z-index: 0;
 }
@@ -1141,13 +1184,14 @@ body.no-scroll {
 
 
 
-   
+
 /* Footer */
 footer {
   background-color: #020202;
   padding: 2rem 1rem 1rem 1rem;
   margin-top: 2rem;
-  font-size: 18px; /* aumenta o tamanho da letra */
+  font-size: 18px;
+  /* aumenta o tamanho da letra */
 }
 
 .footer-container {
@@ -1160,26 +1204,36 @@ footer {
 .footer-section {
   margin-bottom: 20px;
   display: flex;
-  flex-direction: column; /* Alinha os itens verticalmente dentro de cada seção */
-  justify-content: space-between; /* Garante que os itens fiquem distribuídos de maneira uniforme dentro de cada seção */
-  flex-grow: 1; /* Permite que cada seção cresça para ocupar o espaço disponível */
-  
+  flex-direction: column;
+  /* Alinha os itens verticalmente dentro de cada seção */
+  justify-content: space-between;
+  /* Garante que os itens fiquem distribuídos de maneira uniforme dentro de cada seção */
+  flex-grow: 1;
+  /* Permite que cada seção cresça para ocupar o espaço disponível */
+
 }
-.footer-section p, .footer-section a {
-color: #ccc;
-font-size: 1.2rem; /* tamanho maior para tudo */
-margin-bottom: 0.5rem;
-text-decoration: none;
+
+.footer-section p,
+.footer-section a {
+  color: #ccc;
+  font-size: 1.2rem;
+  /* tamanho maior para tudo */
+  margin-bottom: 0.5rem;
+  text-decoration: none;
 }
 
 .footer-section ul li a {
-font-size: 1.2rem; /* aumenta especificamente os links */
+  font-size: 1.2rem;
+  /* aumenta especificamente os links */
 }
+
 .footer-section h3 {
   margin-bottom: 1rem;
   color: white;
 }
-.footer-section p, .footer-section a {
+
+.footer-section p,
+.footer-section a {
   color: #ccc;
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
@@ -1194,11 +1248,13 @@ font-size: 1.2rem; /* aumenta especificamente os links */
 .footer-section ul li a {
   color: white;
   text-decoration: none;
-  transition: color 0.3s ease; /* Adiciona transição suave ao mudar a cor */
+  transition: color 0.3s ease;
+  /* Adiciona transição suave ao mudar a cor */
 }
 
 .footer-section ul li a:hover {
-  color: #e20505; /* Altera a cor para vermelho quando o mouse passar por cima */
+  color: #e20505;
+  /* Altera a cor para vermelho quando o mouse passar por cima */
 
 }
 
@@ -1256,19 +1312,23 @@ font-size: 1.2rem; /* aumenta especificamente os links */
 }
 
 .separator {
-  width: 100%; /* Garante que a barra ocupe toda a largura */
-  border: none; /* Remove as bordas padrão do <hr> */
-  border-top: 2px solid #e20505; /* Linha vermelha */
-  margin: 0; /* Remove margens automáticas */
+  width: 100%;
+  /* Garante que a barra ocupe toda a largura */
+  border: none;
+  /* Remove as bordas padrão do <hr> */
+  border-top: 2px solid #e20505;
+  /* Linha vermelha */
+  margin: 0;
+  /* Remove margens automáticas */
 }
 
 @media (min-width: 1000px) {
   .rankings-grid {
-      justify-content: center;
+    justify-content: center;
   }
 }
 
-   /* Update the media query for responsiveness */
+/* Update the media query for responsiveness */
 @media (max-width: 768px) {
   .profile-header {
     margin-left: 0;
@@ -1277,45 +1337,47 @@ font-size: 1.2rem; /* aumenta especificamente os links */
   }
 
   .profile-dropdown {
-    right: auto; /* Adjust for mobile layout */
+    right: auto;
+    /* Adjust for mobile layout */
     left: 0;
   }
+
   .rankings-grid {
     gap: 1.5rem;
-}
+  }
 
-.ranking-card {
+  .ranking-card {
     min-width: 180px;
     max-width: 200px;
-}
+  }
 
-.ranking-img {
+  .ranking-img {
     width: 50px;
     height: 50px;
-}
+  }
 
-.ranking-card h4 {
+  .ranking-card h4 {
     font-size: 1.1rem;
-}
+  }
 
-.ranking-position {
+  .ranking-position {
     font-size: 0.9rem;
-}
+  }
 
-.ranking-points {
+  .ranking-points {
     font-size: 0.8rem;
-}
+  }
 
-.belt {
+  .belt {
     height: 14px;
-}
+  }
 
-.stripe {
+  .stripe {
     width: 2px;
-}
+  }
 
-.history-btn {
+  .history-btn {
     font-size: 0.8rem;
     padding: 0.4rem 0.8rem;
-}
+  }
 }

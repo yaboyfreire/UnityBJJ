@@ -25,8 +25,6 @@ main {
 }
 /* ====== NAVIGATION MENU STYLES ====== */
 
-
-
 .navigation {
   display: flex;
   align-items: center;
@@ -60,31 +58,88 @@ main {
 }
 
 header {
-  position: fixed; /* Posição fixa */
-  top: 0; /* Alinhado ao topo */
-  left: 0; /* Alinhado à esquerda */
-  right: 0; /* Alinhado à direita */
-  z-index: 10; /* Para garantir que fique acima de outros conteúdos */
-  background: rgba(0, 0, 0, 0.8); /* Adicione uma cor de fundo com transparência, se desejar */
-  position: absolute;  /* Fixa a barra no topo */
-    top: 0;  /* Coloca a barra no topo da página */
-    left: 0;  /* Garante que a barra ocupe toda a largura */
-    z-index: 10;  /* Garante que a barra fique acima de outros elementos */
+  position: fixed;
+  /* PosiÃ§ÃĢo fixa */
+  top: 0;
+  /* Alinhado ao topo */
+  left: 0;
+  /* Alinhado Ã  esquerda */
+  right: 0;
+  /* Alinhado Ã  direita */
+  z-index: 10;
+  /* Para garantir que fique acima de outros conteÃšdos */
+  background: rgba(0, 0, 0, 0.8);
+  /* Adicione uma cor de fundo com transparÃŠncia, se desejar */
+  position: absolute;
+  /* Fixa a barra no topo */
+  top: 0;
+  /* Coloca a barra no topo da pÃĄgina */
+  left: 0;
+  /* Garante que a barra ocupe toda a largura */
+  z-index: 10;
+  /* Garante que a barra fique acima de outros elementos */
+}
+
+.header-bar {
+  width: 100%;
+  /* Garante que a barra ocupe toda a largura da tela */
+  height: 15px;
+  /* Aumenta a altura da barra para torná-la mais grossa */
+  background-color: #f5f5f5;
+  /* Cor cinza claro para a barra */
+  position: absolute;
+  /* Fixa a barra no topo */
+  top: 0;
+  /* Coloca a barra no topo da página */
+  left: 0;
+  /* Garante que a barra ocupe toda a largura */
+  z-index: 10;
+  /* Garante que a barra fique acima de outros elementos */
+}
+
+header {
+  position: fixed;
+  /* Posição fixa */
+  top: 0;
+  /* Alinhado ao topo */
+  left: 0;
+  /* Alinhado à esquerda */
+  right: 0;
+  /* Alinhado à direita */
+  z-index: 10;
+  /* Para garantir que fique acima de outros conteúdos */
+  background: rgba(0, 0, 0, 0.8);
+  /* Adicione uma cor de fundo com transparência, se desejar */
+  position: absolute;
+  /* Fixa a barra no topo */
+  top: 0;
+  /* Coloca a barra no topo da página */
+  left: 0;
+  /* Garante que a barra ocupe toda a largura */
+  z-index: 10;
+  /* Garante que a barra fique acima de outros elementos */
+}
+
+.menu-list li:not(.dropdown-active):hover > a {
+  background: rgba(0,0,0,0.03);
 }
 
 header .navigation {
   display: flex;
   align-items: center;
-  height: 100px; /* Altura do cabeçalho */
-  width: 100%; /* Garantindo que ocupe toda a largura */
+  position: fixed;
+  height:9%;
+  min-width: 100%;
+  z-index: 10;
+  background: #000000cc;
 }
 
-header .navigation .logo {
+header .navigation .logo{
   margin-left: 1%;
-  margin-right: 5%;
+  margin-right:5%;
 }
 
-header .navigation .logo h1 {
+header .navigation .logo h1{
   color: #b1d4e0;
   font-size: 30px;
   line-height: 38px;
@@ -99,10 +154,11 @@ header .navigation .menu-list {
   margin: auto 20px auto 0;
 }
 
-.LoginBtn {
-  margin-left: auto;
-  margin-right: 1%;
-  background-color: #00000000;
+.LoginBtn{
+  
+  margin-left:auto;
+  margin-right:1%;
+  background-color: #00000000; 
   border: none;
   color: white;
   padding: 15px 30px;
@@ -115,12 +171,12 @@ header .navigation .menu-list {
 
 .LoginBtn:hover {
   background-color: #ff0000;
-  cursor: pointer;
+  cursor:pointer;
 }
+.button1{
 
-.button1 {
-  margin-right: 5%;
-  background-color: #ff0000;
+  margin-right:5%;
+  background-color: #ff0000; 
   border: none;
   color: white;
   padding: 15px 30px;
@@ -130,23 +186,22 @@ header .navigation .menu-list {
   font-size: 16px;
   font-family: 'Oswald', sans-serif;
 }
-
 .button1:hover {
+  
   background-color: #db0505;
-  cursor: pointer;
+  cursor:pointer;
 }
-
 header .navigation .humbarger {
   margin-right: 20px;
   display: none;
-}
-
-header .navigation .humbarger .bar {
+ }
+ 
+header .navigation .humbarger .bar{
   width: 30px;
   height: 2px;
   margin: 7px;
   background: #b1d4e0;
-}
+ }
 
 header .navigation .menu-list li a {
   color: #b1d4e0;
@@ -158,9 +213,10 @@ header .navigation .menu-list li a {
   text-decoration: none;
   display: flex;
   justify-content: space-between;
-  flex-grow: 0;
+  flex-grow: 0; /* Prevent menu items from growing */
   font-family: 'Oswald', sans-serif;
 }
+
   
   
 .date-picker {
@@ -218,76 +274,84 @@ header .navigation .menu-list li a {
   }
   
   /* Card styling */
-.card {
+  .profile-section {
+    margin-top: 65px;
+    /* a bit more spacing under the fixed nav */
+    background-color: #2b2b2b;
+    padding: 30px;
+}
+
+.profile-card {
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #222, #1a1a1a);
+    background-color: #1a1a1a;
+    color: white;
+    padding: 30px;
     border-radius: 10px;
-    margin: 1rem;
-    padding: 1rem;
-    gap: 1rem;
-    flex-direction: row;
-    box-shadow: 0 0 10px #000;
-  }
-  
-  .card img {
-    width: 80px;
-    height: 80px;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.profile-img {
+    width: 120px;
+    height: 120px;
     border-radius: 5px;
+    margin-right: 30px;
     object-fit: cover;
-  }
-  .card-details {
+}
+
+.profile-info {
     flex: 1;
-  }
-  /* Alteração das cores para as partes específicas do card */
-.card-details h2,
-.card-details p {
-  color: #f5f5f5; /* Cor das letras para todas as partes do card */
 }
 
-/* Para garantir que os textos específicos também fiquem com a cor correta */
-.card-details h2.bruce-lee,
-.card-details p.member-since,
-.card-details p.idade-bruce-wayne,
-.card-details p.contexto,
-.card-details p.junior-contexto {
-  color: #f5f5f5;
+.profile-info h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: 'Oswald', sans-serif;
 }
-  .card-details h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.3rem;
-  }
-  
-  .card-details p {
-    font-size: 0.9rem;
-    margin-bottom: 0.2rem;
-  }
-  
-  
-  .bar {
+
+.profile-info p {
+    font-size: 1.25rem;
+    margin: 4px 0;
+    font-family: 'Oswald', sans-serif;
+}
+
+.belt-divider {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.belt {
+    position: relative; /* Needed for absolute positioning */
+    height: 16px;
+    margin-top: 20px;
+    width: 100%;
+    background-color: #a020f0; /* Purple background for entire belt */
+}
+.purple-belt {
+    flex: 8.5;
+    background-color: #a020f0;
+    margin-right: -5%; /* Allows black to overlap */
+}
+
+.black-tip {
+    position: absolute;
+    right: 5%; /* Leaves 5% purple at the end */
+    width: 20%; /* Width of black tip - adjust as needed */
+    height: 100%;
+    background-color: black;
     display: flex;
-    height: 8px;
-    border-radius: 4px;
-    overflow: hidden;
-    margin-top: 0.5rem;
-  }
-  
- .bar-purple {
-  background-color: #a044ff;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 5px;
+    gap: 5px;
 }
 
-.bar-black {
-  background-color: black;
-}
-
-.bar-white {
-  background-color: white;
-}
-
-
-main {
-  flex-grow: 1;
-  margin-top: 100px; /* Ajuste de acordo com a altura do seu cabeçalho */
+.stripe {
+    width: 4px;
+    height: 100%;
+    background-color: white;
 }
 
 
