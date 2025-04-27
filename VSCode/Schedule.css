@@ -4,12 +4,109 @@
     box-sizing: border-box;
 }
 
+main {
+    flex-grow: 1;
+}
+
+/* ====== NAVIGATION MENU STYLES ====== */
+
+.navigation {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  position: relative;
+}
+
+.menu-list {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu-list li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.menu-list li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 20px;
+  white-space: nowrap;
+  position: relative;
+}
+
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
+  position: fixed;
+  /* PosiÃ§ÃĢo fixa */
+  top: 0;
+  /* Alinhado ao topo */
+  left: 0;
+  /* Alinhado Ã  esquerda */
+  right: 0;
+  /* Alinhado Ã  direita */
+  z-index: 10;
+  /* Para garantir que fique acima de outros conteÃšdos */
+  background: rgba(0, 0, 0, 0.8);
+  /* Adicione uma cor de fundo com transparÃŠncia, se desejar */
+  position: absolute;
+  /* Fixa a barra no topo */
+  top: 0;
+  /* Coloca a barra no topo da pÃĄgina */
+  left: 0;
+  /* Garante que a barra ocupe toda a largura */
+  z-index: 10;
+  /* Garante que a barra fique acima de outros elementos */
+}
+
+.header-bar {
+  width: 100%;
+  /* Garante que a barra ocupe toda a largura da tela */
+  height: 15px;
+  /* Aumenta a altura da barra para torná-la mais grossa */
+  background-color: #f5f5f5;
+  /* Cor cinza claro para a barra */
+  position: absolute;
+  /* Fixa a barra no topo */
+  top: 0;
+  /* Coloca a barra no topo da página */
+  left: 0;
+  /* Garante que a barra ocupe toda a largura */
+  z-index: 10;
+  /* Garante que a barra fique acima de outros elementos */
+}
+
+header {
+  position: fixed;
+  /* Posição fixa */
+  top: 0;
+  /* Alinhado ao topo */
+  left: 0;
+  /* Alinhado à esquerda */
+  right: 0;
+  /* Alinhado à direita */
+  z-index: 10;
+  /* Para garantir que fique acima de outros conteúdos */
+  background: rgba(0, 0, 0, 0.8);
+  /* Adicione uma cor de fundo com transparência, se desejar */
+  position: absolute;
+  /* Fixa a barra no topo */
+  top: 0;
+  /* Coloca a barra no topo da página */
+  left: 0;
+  /* Garante que a barra ocupe toda a largura */
+  z-index: 10;
+  /* Garante que a barra fique acima de outros elementos */
+}
+
+.menu-list li:not(.dropdown-active):hover > a {
+  background: rgba(0,0,0,0.03);
 }
 
 header .navigation {
@@ -79,11 +176,10 @@ header .navigation .menu-list {
   background-color: #db0505;
   cursor:pointer;
 }
-
 header .navigation .humbarger {
   margin-right: 20px;
   display: none;
-}
+ }
  
 header .navigation .humbarger .bar{
   width: 30px;
