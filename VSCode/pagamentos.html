@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamentos</title>
+    <link rel="stylesheet" href="pagamentos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navigation">
+            <div class="logo">
+                <img src="./Images/logo.png" width="100" height="100" alt="Unity BJJ Logo">
+            </div>
+            <ul class="menu-list">
+                <li><a href="AboutUs.html">About us</a></li>
+                <li><a href="#">Become a member</a></li>
+                <li><a href="#">Schedule</a></li>
+                <li><a href="#">Contacts</a></li>
+            </ul>
+            <!-- Updated profile section with dropdown -->
+            <div class="profile-header">
+                <div class="profile-content">
+                    <img src="./Images/images 2.png" alt="Bruce Wayne Profile" class="profile-header-img">
+                    <span class="profile-name">Bruce Wayne</span>
+                </div>
+                <div class="profile-dropdown">
+                    <ul class="dropdown-menu">
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="humbarger">
+                <div class="bar"></div>
+                <div class="bar2 bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="main">
+        <h1>Histórico de Mensalidades</h1>
+        <div class="payment-history">
+            <div class="payment-row header">
+                <span>Mês</span>
+                <span>Data de Pagamento</span>
+                <span>Valor</span>
+                <span>Status</span>
+                <span>Ação</span>
+            </div>
+            <div class="payment-row pendente">
+                <span>Mensalidade de Maio</span>
+                <span class="payment-date">Até 08/05</span>
+                <span class="payment-value">59,99 €</span>
+                <span class="status pendente-status">Pendente</span>
+                <button class="btn-pagar">Pagar</button>
+            </div>
+            <div class="payment-row por-pagar">
+                <span>Mensalidade de Abril</span>
+                <span class="payment-date">Vencida</span>
+                <span class="payment-value">59,99 €</span>
+                <span class="status por-pagar-status">Por Pagar</span>
+                <button class="btn-por-pagar">Por Pagar</button>
+            </div>
+            <div class="payment-row paga">
+                <span>Mensalidade de Março</span>
+                <span class="payment-date">Pago em 02/03</span>
+                <span class="payment-value">59,99 €</span>
+                <span class="status paga-status">Pago</span>
+                <!-- Removed Ação button -->
+            </div>
+            <div class="payment-row paga">
+                <span>Mensalidade de Fevereiro</span>
+                <span class="payment-date">Pago em 03/02</span>
+                <span class="payment-value">59,99 €</span>
+                <span class="status paga-status">Pago</span>
+                <!-- Removed Ação button -->
+            </div>
+            <div class="payment-row paga">
+                <span>Mensalidade de Janeiro</span>
+                <span class="payment-date">Pago em 04/01</span>
+                <span class="payment-value">59,99 €</span>
+                <span class="status paga-status">Pago</span>
+                <!-- Removed Ação button -->
+            </div>
+        </div>
+    </main>
+
+
+</section>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <p><img src="./Images/instagram-new 1.png" alt="Instagram"> Unity.BJJ</p>
+            <p><img src="./images/facebook-new 1.png" alt="Facebook"> Unity.BJJ</p>
+            <p><img src="./Images/twitterx 1.png" alt="Twitter"> Unity.BJJ</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <p><img src="./Images/icon.png" alt="Phone Icon"> 987654321 | 212345678</p>
+            <p><img src="./Images/Mail.png" alt="Mail Icon"> Unity.BJJ@gmail.com</p>
+            <p><img src="./Images/Map pin.png" alt="Map Icon"> Rua qualquer coisa N 23</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">Quem Somos</a></li>
+                <li><a href="#">Contacte-nos</a></li>
+                <li><a href="#">Perguntas Frequentes</a></li>
+                <li><a href="#">Livro de Reclamações</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <hr class="separator">
+        <p>© 2025 Unity BJJ. All rights reserved.</p>
+    </div>
+</footer>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll(".btn-pagar, .btn-por-pagar");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", (event) => {
+                const row = event.target.closest(".payment-row");
+
+                // Target the status, button, and payment date elements within the row
+                const status = row.querySelector(".status");
+                const paymentDate = row.querySelector(".payment-date");
+
+                // Apply fade-out animation to the button
+                if (row.classList.contains("pendente") || row.classList.contains("por-pagar")) {
+                    // Fade out the button
+                    button.classList.add("fade-out");
+
+                    // Update the status to "Pago" with the correct styling
+                    status.classList.add("fade-out");
+                    setTimeout(() => {
+                        status.textContent = "Pago";
+                        status.className = "status paga-status";
+                        status.classList.remove("fade-out"); // Reset fade-out for visibility
+
+                        // Remove the button after the animation completes
+                        button.remove();
+
+                        // Update the row's class to "paga"
+                        row.className = "payment-row paga";
+
+                        // Update the payment date to today's date
+                        const today = new Date();
+                        const formattedDate = `Pago em ${today.getDate().toString().padStart(2, '0')}/${(today.getMonth() + 1).toString().padStart(2, '0')}`;
+                        paymentDate.textContent = formattedDate;
+                    }, 500);
+                }
+            });
+        });
+    });
+</script>
+  

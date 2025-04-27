@@ -1,0 +1,563 @@
+ /* General Reset and Layout */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    padding-top: 5rem; /* Adiciona espaço no topo da página */
+  }
+  
+  
+  /* Ensure the body takes the full height of the viewport */
+html, body {
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #2d2d2d;
+}
+
+/* Ensure the main content takes the remaining space and has padding */
+.main {
+    padding: 150px 2rem 100px 2rem; /* Top padding to clear the fixed header, bottom padding to clear the footer */
+    max-width: 700px;
+    margin: 0 auto;
+    font-family: 'Oswald', sans-serif;
+    color: white;
+    flex-grow: 1; /* Allows main to grow and push footer down */
+    min-height: calc(100vh - 250px); /* Ensures main takes up enough height (adjust 250px based on header + footer height) */
+}
+   
+  
+
+  /* ====== NAVIGATION MENU STYLES ====== */
+
+  .navigation {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    position: relative;
+  }
+  
+  .menu-list {
+    display: flex;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .menu-list li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .menu-list li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 20px;
+    white-space: nowrap;
+    position: relative;
+  }
+  
+  header {
+    position: fixed; /* Posição fixa */
+    top: 0; /* Alinhado ao topo */
+    left: 0; /* Alinhado à esquerda */
+    right: 0; /* Alinhado à direita */
+    z-index: 10; /* Para garantir que fique acima de outros conteúdos */
+    background: rgba(0, 0, 0, 0.8); /* Adicione uma cor de fundo com transparência, se desejar */
+    position: absolute;  /* Fixa a barra no topo */
+      top: 0;  /* Coloca a barra no topo da página */
+      left: 0;  /* Garante que a barra ocupe toda a largura */
+      z-index: 10;  /* Garante que a barra fique acima de outros elementos */
+  }
+  
+  header .navigation {
+    display: flex;
+    align-items: center;
+    height: 100px; /* Altura do cabeçalho */
+    width: 100%; /* Garantindo que ocupe toda a largura */
+  }
+  
+  header .navigation .logo {
+    margin-left: 1%;
+    margin-right: 5%;
+  }
+  
+  header .navigation .logo h1 {
+    color: #b1d4e0;
+    font-size: 30px;
+    line-height: 38px;
+  }
+  
+  header .navigation .menu-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 45%;
+    margin: auto 20px auto 0;
+  }
+ /* Profile Header Styles */
+.profile-header {
+  margin-left: auto;
+  margin-right: 1%;
+  display: flex;
+  align-items: center;
+  position: relative; /* For positioning the dropdown */
+}
+
+.profile-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer; /* Indicate it's clickable/hoverable */
+}
+
+.profile-header-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-name {
+  color: #b1d4e0;
+  font-size: 1rem;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+}
+
+/* Dropdown Styles */
+.profile-dropdown {
+  position: absolute;
+  top: 100%; /* Position below the profile */
+  right: 0;
+  background: rgba(0, 0, 0, 0.9); /* Dark background with slight transparency */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  opacity: 0; /* Hidden by default */
+  visibility: hidden; /* Hidden by default */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 20; /* Ensure it appears above other elements */
+}
+
+.dropdown-menu {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+  min-width: 150px; /* Ensure the dropdown has enough width */
+}
+
+.dropdown-menu li {
+  margin: 0;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 20px;
+  color: #b1d4e0;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #ff0000; /* Red background on hover */
+}
+
+/* Show dropdown on hover */
+.profile-header:hover .profile-dropdown {
+  opacity: 1;
+  visibility: visible;
+}
+  
+  header .navigation .humbarger {
+    margin-right: 20px;
+    display: none;
+  }
+  
+  header .navigation .humbarger .bar {
+    width: 30px;
+    height: 2px;
+    margin: 7px;
+    background: #b1d4e0;
+  }
+  
+  header .navigation .menu-list li a {
+    color: #b1d4e0;
+    font-size: 1.25rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 1s ease, border 1s ease;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 0;
+    font-family: 'Oswald', sans-serif;
+  }
+
+/* Main Section */
+.main {
+    padding: 120px 1rem 50px 1rem;
+    max-width: 800px; /* Wider container for the table-like layout */
+    margin: 0 auto;
+    font-family: 'Oswald', sans-serif;
+    color: white;
+    flex-grow: 1;
+    min-height: calc(100vh - 250px);
+    width: 100%;
+}
+
+.main h1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: white;
+    font-weight: 700;
+}
+
+/* Payment History Table */
+.payment-history {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Header Row */
+.payment-row.header {
+    background-color: #1a1a1a;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ccc;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #ff0000;
+}
+
+/* Define fixed widths for each column in the header */
+.payment-row.header span {
+    flex: none;
+    text-align: left;
+}
+
+.payment-row.header span:nth-child(1) { /* Mês */
+    width: 30%;
+}
+
+.payment-row.header span:nth-child(2) { /* Data de Pagamento */
+    width: 25%;
+}
+
+.payment-row.header span:nth-child(3) { /* Valor */
+    width: 15%;
+}
+
+.payment-row.header span:nth-child(4) { /* Status */
+    width: 15%;
+    text-align: center;
+}
+
+.payment-row.header span:nth-child(5) { /* Ação */
+    width: 15%;
+    text-align: center;
+}
+
+/* Payment Rows */
+.payment-row {
+    background-color: #3c3c3c;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #555;
+    transition: background-color 0.3s ease;
+}
+
+.payment-row:hover:not(.header) {
+    background-color: #4a4a4a;
+}
+
+/* Alternating row colors for better readability */
+.payment-row:nth-child(odd):not(.header) {
+    background-color: #353535;
+}
+
+/* Define fixed widths for each column in the data rows */
+.payment-row span {
+    flex: none;
+    font-size: 1rem;
+    color: white;
+}
+
+.payment-row span:nth-child(1) { /* Mês */
+    width: 30%;
+}
+
+.payment-row span:nth-child(2) { /* Data de Pagamento */
+    width: 25%;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.payment-row span:nth-child(3) { /* Valor */
+    width: 15%;
+    font-weight: bold;
+}
+
+.payment-row span:nth-child(4) { /* Status */
+    width: 15%;
+    text-align: center;
+}
+
+.payment-row span:nth-child(5) { /* Ação */
+    width: 15%;
+    text-align: center;
+}
+
+/* Status Styling */
+.status {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+.pendente-status {
+    background-color: #ffa500;
+    color: #fff;
+}
+
+.por-pagar-status {
+    background-color: #d32f2f;
+    color: #fff;
+}
+
+.paga-status {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+/* Button Styles */
+.btn-pagar,
+.btn-por-pagar,
+.btn-pago {
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-pagar {
+    background: linear-gradient(45deg, #1fa02a, #2ecc71);
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.btn-pagar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.btn-por-pagar {
+    background: linear-gradient(45deg, #d32f2f, #ff5555);
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.btn-por-pagar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.btn-pago {
+    background: linear-gradient(45deg, #4caf50, #66bb6a);
+    color: white;
+    cursor: default;
+    opacity: 0.7;
+}
+
+/* Fade-out animation for elements */
+.fade-out {
+    animation: fadeOut 0.5s ease forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+
+
+  /* Footer */
+footer {
+    background-color: #020202;
+    padding: 2rem 1rem 1rem 1rem;
+    margin-top: 2rem;
+    font-size: 18px; /* aumenta o tamanho da letra */
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  
+  .footer-section {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Alinha os itens verticalmente dentro de cada seção */
+    justify-content: space-between; /* Garante que os itens fiquem distribuídos de maneira uniforme dentro de cada seção */
+    flex-grow: 1; /* Permite que cada seção cresça para ocupar o espaço disponível */
+    
+  }
+  .footer-section p, .footer-section a {
+  color: #ccc;
+  font-size: 1.2rem; /* tamanho maior para tudo */
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  }
+  
+  .footer-section ul li a {
+  font-size: 1.2rem; /* aumenta especificamente os links */
+  }
+  .footer-section h3 {
+    margin-bottom: 1rem;
+    color: white;
+  }
+  .footer-section p, .footer-section a {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Adiciona transição suave ao mudar a cor */
+  }
+  
+  .footer-section ul li a:hover {
+    color: #e20505; /* Altera a cor para vermelho quando o mouse passar por cima */
+  
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    color: #999;
+    font-size: 0.8rem;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+  }
+  
+  .separator {
+    border: none;
+    border-top: 2px solid red;
+    margin: 1rem 0;
+  }
+  
+  .footer-bottom p {
+    text-align: center;
+    color: #fff;
+    font-size: 1em;
+    margin-top: 10px;
+  }
+  
+  
+  /* Ícones do footer */
+  .footer-section img {
+    width: 20px;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+  
+  .footer-section a {
+    color: red;
+    text-decoration: none;
+  }
+  
+  /* Barra separadora no footer */
+  .footer-bottom {
+    width: 100%;
+    padding-top: 20px;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+  }
+  
+  .separator {
+    width: 100%; /* Garante que a barra ocupe toda a largura */
+    border: none; /* Remove as bordas padrão do <hr> */
+    border-top: 2px solid #e20505; /* Linha vermelha */
+    margin: 0; /* Remove margens automáticas */
+  }
+  
+     /* Update the media query for responsiveness */
+  @media (max-width: 768px) {
+    .profile-header {
+      margin-left: 0;
+      margin-right: 0;
+      justify-content: flex-start;
+    }
+  
+    .profile-dropdown {
+      right: auto; /* Adjust for mobile layout */
+      left: 0;
+    }
+
+
+    .payment-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .payment-row span {
+        text-align: left !important;
+    }
+
+    .payment-row .status,
+    .payment-row button {
+        align-self: flex-start;
+    }
+}
+  
