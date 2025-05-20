@@ -16,11 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
     dropdownContent.innerHTML = ` 
         <a href="desempenhoac.html">My Account</a>
         <a href="pagamentos.html">Payments</a>
-        <a href="#">Progress</a>
         <a href="medalsPage.html">Medals</a>
         <a href="checkatendennce.html">Attendace</a>
         <a href="Competitions.html">Upcoming Competitions</a>
-        <a href="#" class="logout-link">Logout</a>
     `;
     
     membershipItem.appendChild(dropdown);
@@ -69,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Set the profile button click action
             profileBtn.onclick = function() {
                 // Redirect to profile page
-                window.location.href = 'profile.html';  // Ensure you have a profile page
+                window.location.href = 'desempenhoac.html';  // Ensure you have a profile page
             };
     
             // Add hover events
