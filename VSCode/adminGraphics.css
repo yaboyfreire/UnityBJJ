@@ -1,0 +1,23 @@
+body {
+  background-color: #121212;
+  color: white;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+#histograma-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #1e1e1e;
+  border-radius: 12px;
+}
+
+canvas {
+  background-color: white;
+  border-radius: 8px;
+}
