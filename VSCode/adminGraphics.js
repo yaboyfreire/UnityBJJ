@@ -53,42 +53,58 @@ calcularMediaAulasPorFaixa().then((mediaPorFaixa) => {
   const ctx = document.getElementById('histogramaFaixas').getContext('2d');
 
   const colorMap = {
-  "White": 'rgb(255, 255, 255)',
-  "Blue": 'rgba(0, 123, 255, 0.6)',
-  "Purple": 'rgba(128, 0, 128, 0.6)',
-  "Brown": 'rgba(139, 69, 19, 0.6)',
-  "Black": 'rgb(0, 0, 0)',
-  "Sem Faixa": 'rgba(192, 192, 192, 0.6)'
-};
+    "White": 'rgba(255, 255, 255, 0.8)',
+    "Blue": 'rgba(0, 123, 255, 0.6)',
+    "Purple": 'rgba(128, 0, 128, 0.6)',
+    "Brown": 'rgba(139, 69, 19, 0.6)',
+    "Black": 'rgb(0, 0, 0)',
+    "Sem Faixa": 'rgba(192, 192, 192, 0.6)'
+  };
 
-const borderColorMap = {
-  "White": 'rgb(0, 0, 0)',
-  "Blue": 'rgba(0, 123, 255, 1)',
-  "Purple": 'rgba(128, 0, 128, 1)',
-  "Brown": 'rgba(139, 69, 19, 1)',
-  "Black": 'rgba(0, 0, 0, 1)',
-  "Sem Faixa": 'rgba(192, 192, 192, 1)'
-};
+  const borderColorMap = {
+    "White": 'rgb(0, 0, 0)',
+    "Blue": 'rgba(0, 123, 255, 1)',
+    "Purple": 'rgba(128, 0, 128, 1)',
+    "Brown": 'rgba(139, 69, 19, 1)',
+    "Black": 'rgba(0, 0, 0, 1)',
+    "Sem Faixa": 'rgba(192, 192, 192, 1)'
+  };
 
-const labels = Object.keys(mediaPorFaixa);
+  const labels = Object.keys(mediaPorFaixa);
+  Chart.register(ChartDataLabels); // Register plugin
+
   new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels,
-    datasets: [{
-      label: 'Média Mensal de Aulas por Faixa',
-      data: Object.values(mediaPorFaixa),
-      backgroundColor: labels.map(faixa => colorMap[faixa] || 'rgba(100,100,100,0.6)'),
-      borderColor: labels.map(faixa => borderColorMap[faixa] || 'rgba(100,100,100,1)'),
-      borderWidth: 1
-    }]
-  },
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Média Mensal de Aulas por Faixa',
+        data: Object.values(mediaPorFaixa),
+        backgroundColor: labels.map(faixa => colorMap[faixa] || 'rgba(100,100,100,0.6)'),
+        borderColor: labels.map(faixa => borderColorMap[faixa] || 'rgba(100,100,100,1)'),
+        borderWidth: 2
+      }]
+    },
     options: {
       responsive: true,
       plugins: {
         legend: {
           labels: {
-            color: 'white'
+            color: 'white',
+          }
+        },
+        datalabels: {
+          anchor: 'start',
+          align: 'start',
+          color: function (context) {
+            const faixa = context.chart.data.labels[context.dataIndex];
+            return faixa === 'White' ? 'black' : 'white';
+          },
+          font: {
+            weight: 'bold'
+          },
+          formatter: function (value) {
+            return value;
           }
         }
       },
@@ -111,6 +127,7 @@ const labels = Object.keys(mediaPorFaixa);
           ticks: { color: 'white' }
         }
       }
-    }
+    },
+    plugins: [ChartDataLabels] // Activate plugin
   });
 });
