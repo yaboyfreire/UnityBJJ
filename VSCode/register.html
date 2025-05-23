@@ -1,129 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Unity BJJ</title>
-    <link rel="stylesheet" href="register.css">
-    <script type="module" src="register.js"></script>
-    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - Unity BJJ</title>
+  <link rel="stylesheet" href="register.css" />
 </head>
+
 <body>
-    <div class="container">
-        <div class="logo-section">
-            <img src="images/logo.png" alt="Unity BJJ Logo">
-        </div>
-        <div class="form-section">
-            <div class="form-container">
-                <h2>Register Profile</h2>
-                <form>
-                    <label for="nome">Name</label>
-                    <input type="text" id="nome" placeholder="Enter your name" required>
-
-                    <label for="data-nascimento">Date of Birth</label>
-                    <input type="date" id="data-nascimento" required>
-
-                    <label for="nacionalidade">Nationality</label>
-                    <div class="select-wrapper">
-                        <select id="nacionalidade" required>
-                            <option value="">Select nationality</option>
-                            <option value="Afghan">Afghan</option>
-                            <option value="South African">South African</option>
-                            <option value="Albanian">Albanian</option>
-                            <option value="German">German</option>
-                            <option value="Andorran">Andorran</option>
-                            <option value="Angolan">Angolan</option>
-                            <option value="Antiguan and Barbudan">Antiguan and Barbudan</option>
-                            <option value="Saudi">Saudi</option>
-                            <option value="Algerian">Algerian</option>
-                            <option value="Argentinian">Argentinian</option>
-                            <option value="Armenian">Armenian</option>
-                            <option value="Australian">Australian</option>
-                            <option value="Austrian">Austrian</option>
-                            <option value="Azerbaijani">Azerbaijani</option>
-                            <option value="Bahamian">Bahamian</option>
-                            <option value="Bangladeshi">Bangladeshi</option>
-                            <option value="Barbadian">Barbadian</option>
-                            <option value="Belgian">Belgian</option>
-                            <option value="Belizean">Belizean</option>
-                            <option value="Beninese">Beninese</option>
-                            <option value="Bolivian">Bolivian</option>
-                            <option value="Brazilian">Brazilian</option>
-                            <option value="British">British</option>
-                            <option value="Bulgarian">Bulgarian</option>
-                            <option value="Burkinabé">Burkinabé</option>
-                            <option value="Burundian">Burundian</option>
-                            <option value="Cape Verdean">Cape Verdean</option>
-                            <option value="Cameroonian">Cameroonian</option>
-                            <option value="Canadian">Canadian</option>
-                            <option value="Chilean">Chilean</option>
-                            <option value="Chinese">Chinese</option>
-                            <option value="Colombian">Colombian</option>
-                            <option value="Congolese">Congolese</option>
-                            <option value="Costa Rican">Costa Rican</option>
-                            <option value="Croatian">Croatian</option>
-                            <option value="Cuban">Cuban</option>
-                            <option value="Danish">Danish</option>
-                            <option value="Egyptian">Egyptian</option>
-                            <option value="Ecuadorian">Ecuadorian</option>
-                            <option value="Spanish">Spanish</option>
-                            <option value="American">American</option>
-                            <option value="Filipino">Filipino</option>
-                            <option value="French">French</option>
-                            <option value="Greek">Greek</option>
-                            <option value="Guatemalan">Guatemalan</option>
-                            <option value="Haitian">Haitian</option>
-                            <option value="Dutch">Dutch</option>
-                            <option value="Honduran">Honduran</option>
-                            <option value="Indian">Indian</option>
-                            <option value="Indonesian">Indonesian</option>
-                            <option value="Italian">Italian</option>
-                            <option value="Japanese">Japanese</option>
-                            <option value="Mozambican">Mozambican</option>
-                            <option value="Mexican">Mexican</option>
-                            <option value="Portuguese">Portuguese</option>
-                            <option value="Russian">Russian</option>
-                            <option value="South Korean">South Korean</option>
-                            <option value="Venezuelan">Venezuelan</option>
-                        </select>
-                        <span class="custom-arrow"></span>
-                    </div>
-
-                    <label for="genero">Gender</label>
-                    <input type="text" id="genero" placeholder="Enter your gender" required>
-
-                    <label for="morada">Address</label>
-                    <input type="text" id="morada" placeholder="Enter your address" required>
-
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Enter your email" required>
-
-                    <label for="faixa">Belt</label>
-                    <div class="select-wrapper">
-                        <select id="faixa" required>
-                            <option value="White">White</option>
-                            <option value="Grey">Grey</option>
-                            <option value="Yellow">Yellow</option>
-                            <option value="Orange">Orange</option>
-                            <option value="Green">Green</option>
-                            <option value="Blue">Blue</option>
-                            <option value="Purple">Purple</option>
-                            <option value="Brown">Brown</option>
-                            <option value="Black">Black</option>
-                        </select>
-                        <span class="custom-arrow"></span>
-                    </div>
-
-                    <label for="password">Password</label>
-<input type="password" id="password" placeholder="Enter your password" required>
-
-                    <button type="submit" id="registerBtn">REGISTER</button>
-
-                    <p class="register-link">Already have an account? <a href="login.html">Register here</a></p>
-                </form>
-            </div>
-        </div>
+  <div class="container">
+    <div class="logo-section">
+      <img src="images/logo.png" alt="Unity BJJ Logo" />
     </div>
+
+    <div class="form-section">
+      <div class="form-container">
+    
+
+        <form id="registerForm" autocomplete="off">
+          <label for="nome">Name</label>
+          <input type="text" id="nome" name="nome" placeholder="Enter your name" required />
+
+          <label for="data-nascimento">Date of Birth</label>
+          <input type="date" id="data-nascimento" name="data-nascimento" required />
+
+          <div class="form-row">
+  <div class="form-group">
+    <label for="nacionalidade">Nationality</label>
+    <div class="select-wrapper">
+      <select id="nacionalidade" name="nacionalidade" required></select>
+      <span class="custom-arrow"></span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="genero">Gender</label>
+    <div class="select-wrapper">
+      <select id="genero" name="genero" required>
+        <option value="">Select gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+      <span class="custom-arrow"></span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="faixa">Belt</label>
+    <div class="select-wrapper">
+      <select id="faixa" name="faixa" required></select>
+      <span class="custom-arrow"></span>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+          <label for="morada">Address</label>
+          <input type="text" id="morada" name="morada" placeholder="Enter your address" required />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+          
+
+          <!-- Height and Weight -->
+          <!-- Side-by-side Height and Weight -->
+<div class="side-by-side-inputs">
+  <div class="input-group">
+    <label for="altura">Height (cm)</label>
+    <input type="number" id="altura" name="altura" placeholder="e.g. 175" min="50" max="300" step="1" required />
+  </div>
+  <div class="input-group">
+    <label for="peso">Weight (kg)</label>
+    <input type="number" id="peso" name="peso" placeholder="e.g. 70" min="20" max="300" step="0.1" required />
+  </div>
+</div>
+
+
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required />
+
+          <button type="submit" id="registerBtn">REGISTER</button>
+
+          <p class="register-link">
+            Already have an account? <a href="login.html">Login here</a>
+          </p>
+        </form>
+
+        <p class="nAluno-msg" style="text-align:center;margin-top:10px;">
+          Your new student number: <strong id="nAlunoOutput">—</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="register.js"></script>
 </body>
-<script type="module" src="register.js"></script>
 </html>

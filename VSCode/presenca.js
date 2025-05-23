@@ -110,16 +110,16 @@ async function fetchClassData() {
 
 
 // Handle user ID input
-function submitUserId() {
-  const userIdInput = document.getElementById("userId");
-  const userId = userIdInput.value.trim();
+function submitnAluno() {
+  const nAlunoInput = document.getElementById("nAluno");
+  const nAluno = nAlunoInput.value.trim();
 
-  if (userId === "") {
+  if (nAluno === "") {
     alert("Please enter a valid User ID.");
     return;
   }
 
-  alert(`User ID submitted: ${userId}`);
+  alert(`User ID submitted: ${nAluno}`);
 }
 
 // Run on page load
