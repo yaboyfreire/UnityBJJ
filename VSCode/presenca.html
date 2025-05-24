@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Presenca nas aulas</title>
+  <title>Presença nas Aulas</title>
   <link rel="stylesheet" href="presenca.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet"/>
 
-  <!-- Firebase SDKs (for Firestore compat) -->
+  <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore-compat.js"></script>
 </head>
@@ -39,13 +39,16 @@
 
   <section class="placeholder">
     <div class="placeholder-container">
-      <h1>Class Info</h1>
-      <div id="firebaseData"></div>
-      <hr />
-      <h2>Enter User ID</h2>
+      <h1>Registo de Presença</h1>
+      <p>Insira o seu número de aluno para confirmar presença na aula atual.</p>
+
       <div class="user-id-box">
-        <input type="text" id="userId" placeholder="Enter your ID" />
-        <button onclick="submitUserId()">Submit</button>
+        <input type="text" id="userId" placeholder="Número de aluno (nAluno)" />
+        <button onclick="submitUserId()">Confirmar Presença</button>
+      </div>
+
+      <div id="firebaseData">
+        <!-- Class info and user presence feedback will appear here -->
       </div>
     </div>
   </section>
