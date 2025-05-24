@@ -1,152 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="adminHomePage.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet">
-    <script type="module" src="adminHomePage.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
 
+  <!-- STYLES -->
+  <link rel="stylesheet" href="adminHomePage.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <!-- EXISTING MAIN SCRIPT (kept as a module in case it uses ES-imports) -->
+  <script type="module" src="adminHomePage.js"></script>
+
+  <!-- NEW: Firebase core libraries (must be loaded before our module that imports them) -->
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js"></script>
 </head>
+
 <body>
-    <!-- Header with navigation only -->
-    <header>
-        <nav class="navigation">
-            <!-- Logo -->
-            <div class="logo">
-                <img src="./Images/logo.png" width="100" height="100" alt="Unity BJJ Logo">
-            </div>
-            
-            <!-- Navigation -->
-            <ul class="menu-list">
-                <li><a href="adminAboutUs.html">About us</a></li>
-                <li class="dropdown">
-                    <a href="#">Members</a>
-                    <div class="dropdown-content">
-                        <a href="adminMembers.html">Manage Members</a>
-                        <a href="adminPayments.html">Payments</a>
-                        <a href="adminAttendance.html">Attendance</a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="adminSchedule.html">Schedule</a>
+  <!-- ================== HEADER / NAV ================== -->
+  <header>
+    <nav class="navigation">
+      <div class="logo">
+        <img src="./Images/logo.png" width="100" height="100" alt="Unity BJJ Logo">
+      </div>
 
-                </li>
-                <li class="dropdown">
-                    <a href="adminGraphics.html">Graphics</a>
-                </li>
-                <li><a href="adminSettings.html">Settings</a></li>
-            </ul>
-            <button class="LoginBtn" id="logoutBtn">LOGOUT</button>
-            
-            <div class="humbarger">
-                <div class="bar"></div>
-                <div class="bar2 bar"></div>
-                <div class="bar"></div>
-            </div>
-        </nav>
-    </header>
+      <ul class="menu-list">
+        <li><a href="adminAboutUs.html">About us</a></li>
 
-    <!-- Main content -->
-    <main>
-        <!-- Dashboard Section -->
-        <section class="dashboard-section">
-            <div class="dashboard-content">
-                <h1>Welcome, <span id="adminName">Admin</span></h1>
-                
-                <div class="stats-container">
-                    <div class="stat-card">
-                        <h3>Total Members</h3>
-                        <p id="totalMembers">0</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Active Members</h3>
-                        <p id="activeMembers">0</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Pending Payments</h3>
-                        <p id="pendingPayments">0</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Today's Classes</h3>
-                        <p id="todaysClasses">0</p>
-                    </div>
-                </div>
-                
-                <div class="quick-actions">
-                    <h2>Quick Actions</h2>
-                    <div class="action-buttons">
-                        <button class="action-btn" onclick="location.href='adminAddMember.html'">
-                            <img src="./Images/add-user.png" alt="Add Member">
-                            Add Member
-                        </button>
-                        <button class="action-btn" onclick="location.href='adminSchedule.html'">
-                            <img src="./Images/calendar.png" alt="Manage Schedule">
-                            Manage Schedule
-                        </button>
-                        <button class="action-btn" onclick="location.href='adminPayments.html'">
-                            <img src="./Images/payment.png" alt="Process Payment">
-                            Process Payment
-                        </button>
-                        <button class="action-btn" onclick="location.href='adminSendMessage.html'">
-                            <img src="./Images/email.png" alt="Send Message">
-                            Send Message
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="recent-activity">
-                    <h2>Recent Activity</h2>
-                    <div class="activity-list">
-                        <!-- Activity items will be populated by JavaScript -->
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <p><img src="./Images/icon.png" alt="Phone Icon"> Admin Support: 987654321</p>
-                <p><img src="./Images/Mail.png" alt="Mail Icon"> admin@unitybjj.com</p>
-                <p>Last Login: <span id="lastLogin">-</span></p>
-            </div>
-    
-            <div class="footer-section">
-                <h3>Admin Tools</h3>
-                <ul>
-                    <li><a href="adminBackup.html">Backup System</a></li>
-                    <li><a href="adminReports.html">Generate Reports</a></li>
-                    <li><a href="adminLogs.html">System Logs</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Help & Support</h3>
-                <ul>
-                    <li><a href="adminHelp.html">Admin Guide</a></li>
-                    <li><a href="adminContact.html">Contact Developer</a></li>
-                    <li><a href="adminUpdates.html">Check for Updates</a></li>
-                </ul>
-            </div>
-        </div>
-    
-        <div class="footer-bottom">
-            <hr class="separator">
-            <p>&copy; 2025 Unity BJJ Admin System. Version <span id="version">1.0.0</span></p>
-        </div>
-    </footer>
+        <!-- MEMBERS (unchanged) -->
+        <li class="dropdown">
+          <a href="#">Members</a>
+          <div class="dropdown-content">
+            <a href="adminMembers.html">Manage Members</a>
+            <a href="adminPayments.html">Payments</a>
+            <a href="adminAttendance.html">Attendance</a>
+          </div>
+        </li>
 
-    <div id="logoutModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2>Are you sure you want to log out?</h2>
-            <button id="confirmLogout" class="modal-btn">Yes, Log Out</button>
-            <button id="cancelLogout" class="modal-btn">Cancel</button>
+        <!-- SCHEDULE now has its own submenu -->
+        <li class="dropdown">
+          <a href="adminSchedule.html">Schedule</a>
+          <div class="dropdown-content">
+            <a href="adminSchedule.html">Manage Schedule</a>
+            <a href="adminClasses.html">Classes</a>
+            <a href="adminEvents.html">Events</a>
+          </div>
+        </li>
+
+        <!-- NEW “Content” dropdown replaces the old “Graphics” entry -->
+        <li class="dropdown">
+          <a href="#">Content</a>
+          <div class="dropdown-content">
+            <a href="adminNews.html">News</a>
+            <a href="adminGallery.html">Gallery</a>
+            <a href="adminTestimonials.html">Testimonials</a>
+          </div>
+        </li>
+
+        <li><a href="adminSettings.html">Settings</a></li>
+      </ul>
+
+      <button class="LoginBtn" id="logoutBtn">LOGOUT</button>
+
+      <div class="humbarger">
+        <div class="bar"></div>
+        <div class="bar2 bar"></div>
+        <div class="bar"></div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ================== MAIN DASHBOARD ================== -->
+  <main>
+    <section class="dashboard-section">
+      <div class="dashboard-content">
+        <h1>Welcome, <span id="adminName">Admin</span></h1>
+
+        <!-- Stats (unchanged) -->
+        <div class="stats-container">
+          <div class="stat-card">
+            <h3>Total Members</h3><p id="totalMembers">0</p>
+          </div>
+          <div class="stat-card">
+            <h3>Active Members</h3><p id="activeMembers">0</p>
+          </div>
+          <div class="stat-card">
+            <h3>Pending Payments</h3><p id="pendingPayments">0</p>
+          </div>
+          <div class="stat-card">
+            <h3>Today's Classes</h3><p id="todaysClasses">0</p>
+          </div>
         </div>
+
+        <!-- Quick actions (1 new button) -->
+        <div class="quick-actions">
+          <h2>Quick Actions</h2>
+          <div class="action-buttons">
+            <button class="action-btn" onclick="location.href='adminAddMember.html'">
+              <img src="./Images/add-user.png" alt="Add Member"> Add Member
+            </button>
+            <button class="action-btn" onclick="location.href='adminSchedule.html'">
+              <img src="./Images/calendar.png" alt="Manage Schedule"> Manage Schedule
+            </button>
+            <button class="action-btn" onclick="location.href='adminPayments.html'">
+              <img src="./Images/payment.png" alt="Process Payment"> Process Payment
+            </button>
+            <button class="action-btn" onclick="location.href='adminSendMessage.html'">
+              <img src="./Images/email.png" alt="Send Message"> Send Message
+            </button>
+            <!-- NEW -->
+            <button class="action-btn" onclick="openCompetitionModal()">
+              <img src="./Images/trophy.png" alt="Add Competition"> Add Competition
+            </button>
+          </div>
+        </div>
+
+        <!-- Recent activity (unchanged placeholder) -->
+        <div class="recent-activity">
+          <h2>Recent Activity</h2>
+          <div class="activity-list"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================== FOOTER ================== -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <p><img src="./Images/icon.png" alt="Phone Icon"> Admin Support: 987654321</p>
+        <p><img src="./Images/Mail.png" alt="Mail Icon"> admin@unitybjj.com</p>
+        <p>Last Login: <span id="lastLogin">-</span></p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Admin Tools</h3>
+        <ul>
+          <li><a href="adminBackup.html">Backup System</a></li>
+          <li><a href="adminReports.html">Generate Reports</a></li>
+          <li><a href="adminLogs.html">System Logs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Help & Support</h3>
+        <ul>
+          <li><a href="adminHelp.html">Admin Guide</a></li>
+          <li><a href="adminContact.html">Contact Developer</a></li>
+          <li><a href="adminUpdates.html">Check for Updates</a></li>
+        </ul>
+      </div>
     </div>
+
+    <div class="footer-bottom">
+      <hr class="separator" />
+      <p>&copy; 2025 Unity BJJ Admin System. Version <span id="version">1.0.0</span></p>
+    </div>
+  </footer>
+
+  <!-- ================== EXISTING LOG-OUT MODAL ================== -->
+  <div id="logoutModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>Are you sure you want to log out?</h2>
+      <button id="confirmLogout" class="modal-btn">Yes, Log Out</button>
+      <button id="cancelLogout" class="modal-btn">Cancel</button>
+    </div>
+  </div>
+
+  <!-- ================== NEW “ADD COMPETITION” MODAL ================== -->
+  <div id="addCompetitionModal" class="modal">
+    <div class="modal-content animated-modal">
+      <span class="close-btn" onclick="closeCompetitionModal()">&times;</span>
+      <h2 style="margin-bottom:20px;">Add Competition</h2>
+
+      <form id="competitionForm">
+        <label for="compName">Competition Name:</label>
+        <input type="text" id="compName" required />
+
+        <label for="compDate">Date:</label>
+        <input type="date" id="compDate" required />
+
+        <label for="compLocation">Location:</label>
+        <input type="text" id="compLocation" required />
+
+        <label for="coordinates">Coordinates (lat, lng):</label>
+        <input type="text" id="coordinates" placeholder="e.g. 38.7223, -9.1393" required />
+
+        <label for="regStart">Start of Registration:</label>
+        <input type="date" id="regStart" required />
+
+        <label for="regEnd">End of Registration:</label>
+        <input type="date" id="regEnd" required />
+
+        <label for="priceSlider">Registration Price: <span id="priceValue">€50</span></label>
+        <input type="range" id="priceSlider" min="10" max="100" step="1" value="50" />
+
+        <button type="submit" class="action-btn" style="margin-top:10px;">
+          <img src="./Images/trophy.png" alt="Add" /> Add
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================== HELPER SCRIPTS ================== -->
+  <script>
+    /* simple open / close */
+    function openCompetitionModal() { document.getElementById('addCompetitionModal').style.display = 'block'; }
+    function closeCompetitionModal() { document.getElementById('addCompetitionModal').style.display = 'none'; }
+    window.onclick = e => {
+      const modal = document.getElementById('addCompetitionModal');
+      if (e.target === modal) modal.style.display = 'none';
+    };
+  </script>
+
+  <!-- FIREBASE WRITE + FORM SUBMIT (module) -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, GeoPoint } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
+    /*  >>>>>> REPLACE WITH YOUR OWN CREDENTIALS IF NECESSARY <<<<<<  */
+    const firebaseConfig = {
+      apiKey: "AIzaSyAvXmhq6Gj75Jbuxqph4rJGmlLz6axXIoc",
+      authDomain: "unitybjj-254ce.firebaseapp.com",
+      projectId: "unitybjj-254ce",
+      storageBucket: "unitybjj-254ce.appspot.com",
+      messagingSenderId: "120660951337",
+      appId: "1:120660951337:web:25bf767fadf75dcb5d3738",
+      measurementId: "G-6ZL2SRMBD5"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db  = getFirestore(app);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('competitionForm');
+
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+
+        const [lat, lng] = document.getElementById('coordinates').value.split(',').map(v => parseFloat(v.trim()));
+
+        try {
+          await addDoc(collection(db, 'Competition'), {
+            Title: document.getElementById('compName').value,
+            Date:  new Date(document.getElementById('compDate').value),
+            Local: document.getElementById('compLocation').value,
+            localizacao: new GeoPoint(lat, lng),
+            RegistrationStart: new Date(document.getElementById('regStart').value),
+            RegistrationEnd:   new Date(document.getElementById('regEnd').value),
+            Price: parseFloat(document.getElementById('priceSlider').value)
+          });
+
+          alert('Competition added successfully!');
+          form.reset();
+          closeCompetitionModal();
+        } catch (err) {
+          console.error(err);
+          alert('Error while saving. Check the console.');
+        }
+      });
+    });
+  </script>
+
+  <!-- AUTO-FILL COORDINATES (OpenStreetMap) -->
+  <script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+      const locationInput = document.getElementById('compLocation');
+      const coordsInput   = document.getElementById('coordinates');
+
+      locationInput.addEventListener('blur', async () => {
+        const query = locationInput.value.trim();
+        if (!query) return;
+
+        try {
+          const r = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=1`);
+          const d = await r.json();
+          if (d.length) {
+            coordsInput.value = `${d[0].lat}, ${d[0].lon}`;
+          } else {
+            alert('Location not found.');
+          }
+        } catch (err) {
+          console.error(err);
+          alert('Error fetching coordinates.');
+        }
+      });
+    });
+  </script>
+
+  <!-- LIVE SLIDER LABEL -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slider = document.getElementById('priceSlider');
+      const label  = document.getElementById('priceValue');
+      slider.addEventListener('input', () => { label.textContent = `€${slider.value}`; });
+    });
+  </script>
 </body>
 </html>
