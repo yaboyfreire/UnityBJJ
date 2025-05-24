@@ -1,16 +1,16 @@
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // DOM Elements
     const loginBtn = document.querySelector('.LoginBtn');
     const membershipItem = document.querySelector('.menu-list li:nth-child(2)');
-    
+
     // Check if user is logged in on page load
     let isLoggedIn = localStorage.getItem('isLoggedIn');
 
     // Create dropdown structure
     const dropdown = document.createElement('div');
     dropdown.className = 'dropdown';
-    
+
     const dropdownContent = document.createElement('div');
     dropdownContent.className = 'dropdown-content';
     dropdownContent.innerHTML = ` 
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <a href="checkatendennce.html">Attendace</a>
         <a href="Competitions.html">Upcoming Competitions</a>
     `;
-    
+
     membershipItem.appendChild(dropdown);
     dropdown.appendChild(dropdownContent);
 
@@ -56,20 +56,20 @@ document.addEventListener('DOMContentLoaded', function() {
             membershipItem.querySelector('a').textContent = 'Membership ▼';
             loginBtn.textContent = 'LOGOUT';
             membershipItem.classList.add('dropdown-active');
-            
+
             // Update Join Now! button to show user's profile name
             const profileBtn = document.querySelector('.button1');
-            
+
             // Get the user's name from localStorage and set it as the profile button text
             const username = localStorage.getItem('name') || 'User';  // Default to 'User' if name is not available
             profileBtn.textContent = username;
-    
+
             // Set the profile button click action
-            profileBtn.onclick = function() {
+            profileBtn.onclick = function () {
                 // Redirect to profile page
                 window.location.href = 'desempenhoac.html';  // Ensure you have a profile page
             };
-    
+
             // Add hover events
             membershipItem.addEventListener('mouseenter', showDropdown);
             dropdown.addEventListener('mouseleave', hideDropdown);
@@ -79,27 +79,27 @@ document.addEventListener('DOMContentLoaded', function() {
             loginBtn.textContent = 'LOGIN';
             membershipItem.classList.remove('dropdown-active');
             hideDropdown();
-            
+
             // Reset Join Now! button
             const profileBtn = document.querySelector('.button1');
             profileBtn.textContent = 'JOIN NOW!';
-            profileBtn.onclick = function() {
+            profileBtn.onclick = function () {
                 // Redirect to sign up page
-                window.location.href = 'signup.html';  // Ensure you have a signup page
+                window.location.href = 'register.html';  // Ensure you have a signup page
             };
-    
+
             // Remove hover events
             membershipItem.removeEventListener('mouseenter', showDropdown);
             dropdown.removeEventListener('mouseleave', hideDropdown);
         }
     }
-    
+
 
     function showDropdown() {
         dropdownContent.style.display = 'block';
         // Center dropdown below menu item
         const rect = membershipItem.getBoundingClientRect();
-        dropdownContent.style.left = `calc(50% - ${rect.width/2}px)`;
+        dropdownContent.style.left = `calc(50% - ${rect.width / 2}px)`;
         dropdownContent.style.minWidth = `${rect.width}px`;
     }
 
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.target.tagName === 'A' && e.target.getAttribute('href') === 'pagamentos.html') {
             return; // Let the link work
         }
-    
+
         if (isLoggedIn && e.target.tagName === 'A' && !e.target.classList.contains('logout-link')) {
             e.preventDefault(); // Prevent default behavior for other links
             dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Modal event listeners
-    confirmLogoutBtn.addEventListener('click', function() {
+    confirmLogoutBtn.addEventListener('click', function () {
         // Log out the user
         localStorage.setItem('isLoggedIn', 'false');
         isLoggedIn = false;
@@ -161,17 +161,17 @@ document.addEventListener('DOMContentLoaded', function() {
         logoutModal.style.display = 'none'; // Close the modal
     });
 
-    cancelLogoutBtn.addEventListener('click', function() {
+    cancelLogoutBtn.addEventListener('click', function () {
         // Close the modal without logging out
         logoutModal.style.display = 'none';
     });
 
-    closeModalBtn.addEventListener('click', function() {
+    closeModalBtn.addEventListener('click', function () {
         logoutModal.style.display = 'none';
     });
 
     // Close the modal if the user clicks outside the modal
-    window.addEventListener('click', function(event) {
+    window.addEventListener('click', function (event) {
         if (event.target === logoutModal) {
             logoutModal.style.display = 'none';
         }
