@@ -49,11 +49,32 @@ async function calcularMediaAulasPorFaixa() {
   return mediaPorFaixa;
 }
 
-calcularMediaAulasPorFaixa().then((mediaPorFaixa) => {
-  const ctx = document.getElementById('histogramaFaixas').getContext('2d');
+async function calcularPresencasMensaisPorFaixa() {
+  const snapshot = await getDocs(collection(db, "StudentPresence"));
+  const presencas = {};
+  const todosMeses = new Set();
+
+  for (const doc of snapshot.docs) {
+    const data = doc.data();
+    const dataTimestamp = data.Data.toDate();
+    const mes = `${dataTimestamp.getFullYear()}-${(dataTimestamp.getMonth() + 1).toString().padStart(2, '0')}`;
+    todosMeses.add(mes);
+
+    const studentRef = data.student;
+    const studentSnap = await getDoc(studentRef);
+    if (!studentSnap.exists()) continue;
+
+    const faixa = studentSnap.data().faixa || "Sem Faixa";
+    if (!presencas[faixa]) presencas[faixa] = {};
+    if (!presencas[faixa][mes]) presencas[faixa][mes] = 0;
+
+    presencas[faixa][mes]++;
+  }
+
+  const mesesOrdenados = Array.from(todosMeses).sort();
 
   const colorMap = {
-    "White": 'rgba(255, 255, 255, 0.8)',
+    "White": 'rgb(255, 255, 255)',
     "Blue": 'rgba(0, 123, 255, 0.6)',
     "Purple": 'rgba(128, 0, 128, 0.6)',
     "Brown": 'rgba(139, 69, 19, 0.6)',
@@ -61,73 +82,73 @@ calcularMediaAulasPorFaixa().then((mediaPorFaixa) => {
     "Sem Faixa": 'rgba(192, 192, 192, 0.6)'
   };
 
-  const borderColorMap = {
-    "White": 'rgb(0, 0, 0)',
-    "Blue": 'rgba(0, 123, 255, 1)',
-    "Purple": 'rgba(128, 0, 128, 1)',
-    "Brown": 'rgba(139, 69, 19, 1)',
-    "Black": 'rgba(0, 0, 0, 1)',
-    "Sem Faixa": 'rgba(192, 192, 192, 1)'
-  };
+  const datasets = Object.keys(presencas).map(faixa => ({
+    label: faixa,
+    data: mesesOrdenados.map(mes => presencas[faixa][mes] || 0),
+    backgroundColor: colorMap[faixa] || 'rgba(100,100,100,0.6)',
+    borderColor: faixa === "White" ? 'black' : undefined,  // Add black border for white bars
+    borderWidth: faixa === "White" ? 1 : 0
+  }));
 
-  const labels = Object.keys(mediaPorFaixa);
-  Chart.register(ChartDataLabels); // Register plugin
+  return { mesesOrdenados, datasets };
+}
+
+calcularMediaAulasPorFaixa().then(mediaPorFaixa => {
+  console.log("Média mensal de presenças por faixa:");
+  console.table(mediaPorFaixa);
+});
+
+calcularPresencasMensaisPorFaixa().then(({ mesesOrdenados, datasets }) => {
+  Chart.register(ChartDataLabels);
+
+  const ctx = document.getElementById('histogramaFaixas').getContext('2d');
 
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels,
-      datasets: [{
-        label: 'Média Mensal de Aulas por Faixa',
-        data: Object.values(mediaPorFaixa),
-        backgroundColor: labels.map(faixa => colorMap[faixa] || 'rgba(100,100,100,0.6)'),
-        borderColor: labels.map(faixa => borderColorMap[faixa] || 'rgba(100,100,100,1)'),
-        borderWidth: 2
-      }]
+      labels: mesesOrdenados,
+      datasets: datasets
     },
     options: {
       responsive: true,
       plugins: {
+        datalabels: {
+          color: 'white',
+          anchor: 'end',
+          align: 'top',
+          formatter: value => value > 0 ? value : ''
+        },
+        title: {
+          display: true,
+          text: 'Presenças por Mês e Faixa',
+          color: 'white'
+        },
         legend: {
           labels: {
-            color: 'white',
-          }
-        },
-        datalabels: {
-          anchor: 'start',
-          align: 'start',
-          color: function (context) {
-            const faixa = context.chart.data.labels[context.dataIndex];
-            return faixa === 'White' ? 'black' : 'white';
-          },
-          font: {
-            weight: 'bold'
-          },
-          formatter: function (value) {
-            return value;
+            color: 'white'
           }
         }
       },
       scales: {
+        x: {
+          ticks: { color: 'white' },
+          title: {
+            display: true,
+            text: 'Mês',
+            color: 'white',
+
+          }
+        },
         y: {
           beginAtZero: true,
+          ticks: { color: 'white' },
           title: {
             display: true,
-            text: 'Aulas (média mensal)',
+            text: 'Número de Presenças',
             color: 'white'
-          },
-          ticks: { color: 'white' }
-        },
-        x: {
-          title: {
-            display: true,
-            text: 'Faixa',
-            color: 'white'
-          },
-          ticks: { color: 'white' }
+          }
         }
       }
-    },
-    plugins: [ChartDataLabels] // Activate plugin
+    }
   });
 });
