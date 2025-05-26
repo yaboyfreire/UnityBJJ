@@ -73,17 +73,17 @@ async function registerUser(e) {
 
   // grab fields
   const data = {
-    name        : f.nome.value,
-    email       : f.email.value,
-    password    : f.password.value,
-    birth       : f["data-nascimento"].value,
-    address     : f.morada.value,
-    nationality : f.nacionalidade.value,
-    gender      : f.genero.value,
-    belt        : f.faixa.value,
-    height      : f.altura.value,   // NEW
-    weight      : f.peso.value      // NEW
-  };
+  name        : f.nome.value,
+  email       : f.email.value,
+  password    : f.password.value,
+  birth       : f["data-nascimento"].value ? Timestamp.fromDate(new Date(f["data-nascimento"].value)) : null,
+  address     : f.morada.value,
+  nationality : f.nacionalidade.value,
+  gender      : f.genero.value,
+  belt        : f.faixa.value,
+  height      : f.altura.value,
+  weight      : f.peso.value
+};
 
   try {
     /* 3.1 create auth account */
@@ -98,16 +98,16 @@ async function registerUser(e) {
     /* 3.3 general profile (/users) */
     const userRef = doc(db, "users", uid);
     await setDoc(userRef, {
-      email       : data.email,
-      name        : data.name,
-      address     : data.address,
-      birth_date  : data.birth,
-      nationality : data.nationality,
-      gender      : data.gender,
-      created_at  : Timestamp.now(),
-      role        : doc(db, "cargo", "3"), // Student
-      phone       : ""
-    });
+  email       : data.email,
+  name        : data.name,
+  address     : data.address,
+  birth_date  : data.birth, // ✅ now it's a Firestore Timestamp
+  nationality : data.nationality,
+  gender      : data.gender,
+  created_at  : Timestamp.now(),
+  role        : doc(db, "cargo", "3"),
+  phone       : ""
+});
 
     /* 3.4 student profile (/student) */
     await setDoc(doc(db, "student", uid), {
@@ -116,6 +116,7 @@ async function registerUser(e) {
       height      : data.height,   // cm
       weight      : data.weight,   // kg
       start_date  : Timestamp.now(),
+      birth_date  : data.birth,
       start_year  : n.year,
       user        : userRef
     });

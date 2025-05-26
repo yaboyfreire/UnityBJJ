@@ -13,21 +13,35 @@ document.addEventListener('DOMContentLoaded', function () {
         let faixa = 'Unknown';
 
         if (studentDataRaw) {
-            try {
-                const studentData = JSON.parse(studentDataRaw);
+    try {
+        const studentData = JSON.parse(studentDataRaw);
 
-                // Member since (start_date.seconds to year)
-                const startDate = studentData.start_date?.seconds
-                    ? new Date(studentData.start_date.seconds * 1000)
-                    : null;
-                memberSince = startDate ? startDate.getFullYear() : 'N/A';
+        // Member since (start_date.seconds to year)
+        const startDate = studentData.start_date?.seconds
+            ? new Date(studentData.start_date.seconds * 1000)
+            : null;
+        memberSince = startDate ? startDate.getFullYear() : 'N/A';
 
-                // Belt (faixa)
-                faixa = studentData.faixa || 'Unknown';
-            } catch (e) {
-                console.error('Error parsing studentData:', e);
+        // Belt (faixa)
+        faixa = studentData.faixa || 'Unknown';
+
+        // Age (birth_date.seconds to age)
+        const birthTimestamp = studentData.birth_date?.seconds;
+        if (birthTimestamp) {
+            const birthDate = new Date(birthTimestamp * 1000);
+            const today = new Date();
+            age = today.getFullYear() - birthDate.getFullYear();
+            const m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
             }
         }
+
+    } catch (e) {
+        console.error('Error parsing studentData:', e);
+    }
+}
+
 
         // Update profile info in DOM
         document.querySelector('.profile-info h1').textContent = name;
