@@ -32,3 +32,15 @@ canvas {
   border-radius: 12px;
   padding: 10px;
 }
+
+#graficoLucros{
+  max-width: 600px;      /* largura máxima para o gráfico */
+  max-height: 600px;     /* altura máxima */
+  width: 100%;           /* responsivo, ocupa toda largura do container */
+  height: auto;          /* altura proporcional */
+  background-color: #222; /* fundo escuro */
+  border-radius: 8px;    /* cantos arredondados */
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  display: block;        /* para remover espaço extra em inline */
+  margin: 20px auto;     /* centraliza horizontalmente e margem vertical */
+}

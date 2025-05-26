@@ -18,60 +18,37 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-async function calcularMediaAulasPorFaixa() {
+async function calcularMediaMensalAtualPorFaixa() {
   const snapshot = await getDocs(collection(db, "StudentPresence"));
-  const faixaMensal = {};
+  const presencasPorFaixa = {};
+  const alunosUnicosPorFaixa = {};
+
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const currentMonth = now.getMonth(); // 0-indexed
 
   for (const doc of snapshot.docs) {
     const data = doc.data();
     const dataTimestamp = data.Data.toDate();
-    const mes = `${dataTimestamp.getFullYear()}-${(dataTimestamp.getMonth() + 1).toString().padStart(2, '0')}`;
+
+    if (dataTimestamp.getFullYear() !== currentYear || dataTimestamp.getMonth() !== currentMonth) continue;
 
     const studentRef = data.student;
     const studentSnap = await getDoc(studentRef);
     if (!studentSnap.exists()) continue;
 
     const faixa = studentSnap.data().faixa || "Sem Faixa";
+    const studentId = studentRef.id;
 
-    if (!faixaMensal[faixa]) faixaMensal[faixa] = {};
-    if (!faixaMensal[faixa][mes]) faixaMensal[faixa][mes] = 0;
+    if (!presencasPorFaixa[faixa]) {
+      presencasPorFaixa[faixa] = 0;
+      alunosUnicosPorFaixa[faixa] = new Set();
+    }
 
-    faixaMensal[faixa][mes]++;
+    presencasPorFaixa[faixa]++;
+    alunosUnicosPorFaixa[faixa].add(studentId);
+
   }
-
-  const mediaPorFaixa = {};
-  for (const faixa in faixaMensal) {
-    const meses = Object.values(faixaMensal[faixa]);
-    const total = meses.reduce((sum, qtd) => sum + qtd, 0);
-    mediaPorFaixa[faixa] = (total / meses.length).toFixed(2);
-  }
-
-  return mediaPorFaixa;
-}
-
-async function calcularPresencasMensaisPorFaixa() {
-  const snapshot = await getDocs(collection(db, "StudentPresence"));
-  const presencas = {};
-  const todosMeses = new Set();
-
-  for (const doc of snapshot.docs) {
-    const data = doc.data();
-    const dataTimestamp = data.Data.toDate();
-    const mes = `${dataTimestamp.getFullYear()}-${(dataTimestamp.getMonth() + 1).toString().padStart(2, '0')}`;
-    todosMeses.add(mes);
-
-    const studentRef = data.student;
-    const studentSnap = await getDoc(studentRef);
-    if (!studentSnap.exists()) continue;
-
-    const faixa = studentSnap.data().faixa || "Sem Faixa";
-    if (!presencas[faixa]) presencas[faixa] = {};
-    if (!presencas[faixa][mes]) presencas[faixa][mes] = 0;
-
-    presencas[faixa][mes]++;
-  }
-
-  const mesesOrdenados = Array.from(todosMeses).sort();
 
   const colorMap = {
     "White": 'rgb(255, 255, 255)',
@@ -82,51 +59,56 @@ async function calcularPresencasMensaisPorFaixa() {
     "Sem Faixa": 'rgba(192, 192, 192, 0.6)'
   };
 
-  const datasets = Object.keys(presencas).map(faixa => ({
-    label: faixa,
-    data: mesesOrdenados.map(mes => presencas[faixa][mes] || 0),
-    backgroundColor: colorMap[faixa] || 'rgba(100,100,100,0.6)',
-    borderColor: faixa === "White" ? 'black' : undefined,  // Add black border for white bars
-    borderWidth: faixa === "White" ? 1 : 0
-  }));
+  const faixas = Object.keys(presencasPorFaixa);
+  const valores = faixas.map(faixa => {
+    const totalPresencas = presencasPorFaixa[faixa];
+    const totalAlunos = alunosUnicosPorFaixa[faixa].size || 1;
+    return parseFloat((totalPresencas / totalAlunos).toFixed(2));
+  });
 
-  return { mesesOrdenados, datasets };
+  const datasets = [{
+    data: valores,
+    backgroundColor: faixas.map(faixa => colorMap[faixa] || 'rgba(100,100,100,0.6)'),
+    borderColor: faixas.map(faixa => faixa === "White" ? 'black' : undefined),
+    borderWidth: faixas.map(faixa => faixa === "White" ? 1 : 0),
+
+  }];
+
+  return { faixas, datasets };
 }
 
-calcularMediaAulasPorFaixa().then(mediaPorFaixa => {
-  console.log("Média mensal de presenças por faixa:");
-  console.table(mediaPorFaixa);
-});
-
-calcularPresencasMensaisPorFaixa().then(({ mesesOrdenados, datasets }) => {
+calcularMediaMensalAtualPorFaixa().then(({ faixas, datasets }) => {
   Chart.register(ChartDataLabels);
 
   const ctx = document.getElementById('histogramaFaixas').getContext('2d');
-
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: mesesOrdenados,
+      labels: faixas,
       datasets: datasets
     },
     options: {
       responsive: true,
       plugins: {
         datalabels: {
-          color: 'white',
-          anchor: 'end',
-          align: 'top',
-          formatter: value => value > 0 ? value : ''
+          color: 'black',         // label color
+          anchor: 'start',          // attach label to the end of the bar (top for vertical bars)
+          align: 'top',         // position label *just above* the bar
+          font: {
+            weight: 'bold',
+            size: 14
+          },
+          formatter: function (value) {
+            return value.toFixed(2);  // format label text
+          }
         },
         title: {
           display: true,
-          text: 'Presenças por Mês e Faixa',
+          text: 'Média de Presenças - Mês Atual',
           color: 'white'
         },
         legend: {
-          labels: {
-            color: 'white'
-          }
+          display: false
         }
       },
       scales: {
@@ -134,9 +116,8 @@ calcularPresencasMensaisPorFaixa().then(({ mesesOrdenados, datasets }) => {
           ticks: { color: 'white' },
           title: {
             display: true,
-            text: 'Mês',
-            color: 'white',
-
+            text: 'Faixa',
+            color: 'white'
           }
         },
         y: {
@@ -144,11 +125,136 @@ calcularPresencasMensaisPorFaixa().then(({ mesesOrdenados, datasets }) => {
           ticks: { color: 'white' },
           title: {
             display: true,
-            text: 'Número de Presenças',
+            text: 'Média de Presenças',
             color: 'white'
           }
         }
       }
     }
+  });
+});
+
+// GRÁFICO NÚMERO 2
+
+async function calcularLucrosPorCategoria() {
+  try {
+    const snapshot = await getDocs(collection(db, "Payment"));
+    const lucrosPorCategoria = {};
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const currentMonth = now.getMonth();
+    
+    for (const doc of snapshot.docs) {
+      const data = doc.data();
+
+      if (!data.Profit || !data.PaymentDate || !data.PaymentType || !data.Amount) continue;
+
+      const paymentDate = data.PaymentDate.toDate();
+      if (paymentDate.getFullYear() !== currentYear || paymentDate.getMonth() !== currentMonth) continue;
+
+      let categoryName = "Outros";
+      try {
+        const paymentTypeSnap = await getDoc(data.PaymentType);
+        if (paymentTypeSnap.exists()) {
+          console.log("PaymentType:", paymentTypeSnap.data()); // 👈 logs referenced document
+          const name = paymentTypeSnap.data().type;
+          if (typeof name === "string" && name.trim() !== "") {
+            categoryName = name.trim();
+          }
+        }
+      } catch (error) {
+        console.warn("Erro ao obter tipo de pagamento:", error);
+      }
+      
+      const amount = Number(data.Amount) || 0;
+      if (amount > 0) {
+        lucrosPorCategoria[categoryName] = (lucrosPorCategoria[categoryName] || 0) + amount;
+      }
+    }
+
+    const result = Object.entries(lucrosPorCategoria)
+      .filter(([label, value]) => value > 0 && label && label !== "undefined")
+      .sort((a, b) => b[1] - a[1]);
+
+    return {
+      labels: result.map(([label]) => label),
+      values: result.map(([_, value]) => value)
+    };
+  } catch (error) {
+    console.error("Erro ao calcular lucros:", error);
+    return { labels: [], values: [] };
+  }
+}
+
+// Inicializar o gráfico após carregar os dados
+calcularLucrosPorCategoria().then(({ labels, values }) => {
+  const canvas = document.getElementById('graficoLucros');
+  if (!canvas) {
+    console.error("Elemento canvas não encontrado!");
+    return;
+  }
+
+  if (labels.length === 0 || values.length === 0 || labels.length !== values.length) {
+    canvas.style.display = 'none';
+    const noDataMsg = document.createElement('p');
+    noDataMsg.textContent = 'Nenhum dado de lucro disponível para o mês atual';
+    noDataMsg.style.color = 'white';
+    canvas.parentNode.insertBefore(noDataMsg, canvas.nextSibling);
+    return;
+  }
+  
+  new Chart(canvas, {
+    type: 'pie',
+    data: {
+      labels: labels,
+      datasets: [{
+        data: values,
+        backgroundColor: labels.map((_, i) =>
+          [
+            'rgba(255, 99, 132, 0.7)',
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255, 206, 86, 0.7)',
+            'rgba(75, 192, 192, 0.7)',
+            'rgba(153, 102, 255, 0.7)'
+          ][i % 5]
+        ),
+        borderColor: 'rgba(255, 255, 255, 0.8)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        datalabels: {
+          formatter: (value, context) => {
+            const sum = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+            return sum > 0 ? `${(value * 100 / sum).toFixed(1)}%\n€${value.toFixed(2)}` : '';
+          },
+          color: '#fff',
+          font: {
+            weight: 'bold',
+            size: 12
+          }
+        },
+        legend: {
+          position: 'right',
+          labels: {
+            color: 'white',
+            font: {
+              size: 12
+            }
+          }
+        },
+        title: {
+          display: true,
+          text: 'Lucros Mensais (Mês Atual)',
+          color: 'white',
+          font: {
+            size: 16
+          }
+        }
+      }
+    },
+    plugins: [ChartDataLabels]
   });
 });
