@@ -92,8 +92,10 @@ calcularMediaMensalAtualPorFaixa().then(({ faixas, datasets }) => {
       plugins: {
         datalabels: {
           color: 'black',         // label color
-          anchor: 'start',          // attach label to the end of the bar (top for vertical bars)
-          align: 'top',         // position label *just above* the bar
+          anchor: 'end',
+          align: 'top',
+
+        
           font: {
             weight: 'bold',
             size: 14
@@ -143,7 +145,7 @@ async function calcularLucrosPorCategoria() {
     const now = new Date();
     const currentYear = now.getFullYear();
     const currentMonth = now.getMonth();
-    
+
     for (const doc of snapshot.docs) {
       const data = doc.data();
 
@@ -165,7 +167,7 @@ async function calcularLucrosPorCategoria() {
       } catch (error) {
         console.warn("Erro ao obter tipo de pagamento:", error);
       }
-      
+
       const amount = Number(data.Amount) || 0;
       if (amount > 0) {
         lucrosPorCategoria[categoryName] = (lucrosPorCategoria[categoryName] || 0) + amount;
@@ -202,7 +204,7 @@ calcularLucrosPorCategoria().then(({ labels, values }) => {
     canvas.parentNode.insertBefore(noDataMsg, canvas.nextSibling);
     return;
   }
-  
+
   new Chart(canvas, {
     type: 'pie',
     data: {
