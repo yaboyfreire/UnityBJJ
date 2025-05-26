@@ -282,11 +282,29 @@ header .navigation .menu-list li a {
   /* Purple background for entire belt */
 }
 
-.purple-belt {
-  flex: 8.5;
-  background-color: #a020f0;
+.belt-1 {
+  background-color: white;
   margin-right: -5%;
-  /* Allows black to overlap */
+}
+
+.belt-2 {
+  background-color: blue;
+  margin-right: -5%;
+}
+
+.belt-3 {
+  background-color: purple; /* Example, adjust colors */
+  margin-right: -5%;
+}
+
+.belt-4 {
+  background-color: brown;
+  margin-right: -5%;
+}
+
+.belt-5 {
+  background-color: #a020f0; /* Purple */
+  margin-right: -5%;
 }
 
 .black-tip {
@@ -1180,10 +1198,6 @@ body.no-scroll {
   background-color: #000;
   z-index: 0;
 }
-
-
-
-
 
 /* Footer */
 footer {
