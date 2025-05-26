@@ -54,7 +54,7 @@ populate("nacionalidade", [
 ]);
 
 populate("faixa",
-  ["White","Grey","Yellow","Orange","Green","Blue","Purple","Brown","Black"]
+  ["White","Blue","Purple","Brown","Black"]
 );
 
 /* ---------- 2 · generate sequential nAluno ---------- */

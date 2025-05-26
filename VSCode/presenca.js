@@ -154,7 +154,7 @@ async function submitUserId() {
         student : studentRef,
         Class   : db.doc(`Class/${currentClassDocId}`),
         Status  : db.doc("ClassStatus/1"),          // PRESENTE
-        data      : firebase.firestore.FieldValue.serverTimestamp()
+        Data      : firebase.firestore.FieldValue.serverTimestamp()
       });
 
       resultDiv.innerHTML =
