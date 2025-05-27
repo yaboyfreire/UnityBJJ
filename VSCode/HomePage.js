@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             // Redirect to login page when "Login" is clicked
             window.location.href = "login.html";
+            
         }
     }
 
@@ -152,10 +153,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    
     // Modal event listeners
     if (logoutModal && confirmLogoutBtn && cancelLogoutBtn && closeModalBtn) {
     confirmLogoutBtn.addEventListener('click', function () {
-        localStorage.setItem('isLoggedIn', 'false');
+        localStorage.clear();
         isLoggedIn = false;
         updateLoginUI();
         logoutModal.style.display = 'none';
