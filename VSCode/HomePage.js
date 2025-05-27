@@ -153,16 +153,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Modal event listeners
+    if (logoutModal && confirmLogoutBtn && cancelLogoutBtn && closeModalBtn) {
     confirmLogoutBtn.addEventListener('click', function () {
-        // Log out the user
         localStorage.setItem('isLoggedIn', 'false');
         isLoggedIn = false;
         updateLoginUI();
-        logoutModal.style.display = 'none'; // Close the modal
+        logoutModal.style.display = 'none';
     });
 
     cancelLogoutBtn.addEventListener('click', function () {
-        // Close the modal without logging out
         logoutModal.style.display = 'none';
     });
 
@@ -170,10 +169,10 @@ document.addEventListener('DOMContentLoaded', function () {
         logoutModal.style.display = 'none';
     });
 
-    // Close the modal if the user clicks outside the modal
     window.addEventListener('click', function (event) {
         if (event.target === logoutModal) {
             logoutModal.style.display = 'none';
         }
     });
+}
 });
