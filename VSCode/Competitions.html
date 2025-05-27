@@ -6,9 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Competitions</title>
+    <link rel="stylesheet" href="HomePage.css">
+    <script src="HomePage.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet">
-    <script src="HomePage.js" defer></script>
     <script type="module" src="Competitions.js"></script>
+
 
 </head>
 
@@ -154,5 +156,12 @@
     </footer>
     </div>
 </body>
-
+<div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Are you sure you want to log out?</h2>
+            <button id="confirmLogout" class="modal-btn">Yes, Log Out</button>
+            <button id="cancelLogout" class="modal-btn">Cancel</button>
+        </div>
+    </div>
 </html>

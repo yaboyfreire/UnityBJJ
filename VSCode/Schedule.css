@@ -296,7 +296,7 @@ h1 {
 .kids-no-gi { background-color: orange; }
 
 /* Modal Styles */
-.modal {
+.modal1 {
   display: none;
   position: fixed;
   z-index: 100;
@@ -307,7 +307,7 @@ h1 {
   background-color: rgba(0,0,0,0.7);
 }
 
-.modal-content {
+.modal-content1 {
   background-color: #333;
   margin: 10% auto;
   padding: 20px;
