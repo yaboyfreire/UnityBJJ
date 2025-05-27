@@ -101,7 +101,7 @@ async function registerUser(e) {
   email       : data.email,
   name        : data.name,
   address     : data.address,
-  birth_date  : data.birth, // ✅ now it's a Firestore Timestamp
+  birth_date  : data.birth, 
   nationality : data.nationality,
   gender      : data.gender,
   created_at  : Timestamp.now(),
@@ -112,6 +112,7 @@ async function registerUser(e) {
     /* 3.4 student profile (/student) */
     await setDoc(doc(db, "student", uid), {
       nAluno      : n.value,
+      nationality : data.nationality,
       faixa       : data.belt,
       height      : data.height,   // cm
       weight      : data.weight,   // kg
