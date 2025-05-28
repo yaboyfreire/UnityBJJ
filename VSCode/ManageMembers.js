@@ -118,4 +118,7 @@ function filterAndSort() {
 searchInput.addEventListener("input", filterAndSort);
 beltFilter.addEventListener("change", filterAndSort);
 statusFilter.addEventListener("change", filterAndSort);
+
 fetchMembers();
+
+
