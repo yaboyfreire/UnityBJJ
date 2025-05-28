@@ -11,6 +11,60 @@
     height: 100%;
   }
   
+footer {
+  background-color: #000;
+  color: #fff;
+  padding: 2rem;
+  text-align: left;
+}
+
+/* Apply grid to the correct container */
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+.footer-section img {
+  width: 4%;
+  height: 4%;
+  vertical-align: middle;
+  margin-right: 2%;
+}
+.footer-section a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  margin: 0.25rem 0;
+  transition: color 0.3s ease;
+}
+
+.footer-section a:hover,
+.footer-section a:focus,
+.footer-section a.selected {
+  color: #ff3b3f;
+  font-weight: bold;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.separator {
+  border: none;
+  height: 1px;
+  background-color: #fff;
+  margin-bottom: 1rem;
+}
+
+
+
   .dropdown-content {
     display: none;
     position: absolute;
@@ -246,7 +300,7 @@
     color: white;
     border: none;
     border-radius: 6px;
-    padding: 15px 25px;
+    padding: 25px 25px;
     font-size: 1rem;
     font-family: 'Oswald', sans-serif;
     cursor: pointer;
@@ -263,7 +317,7 @@
   }
   
   .action-btn img {
-    width: 20px;
+    width: 30px;
     margin-right: 10px;
   }
   

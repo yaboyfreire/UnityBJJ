@@ -186,7 +186,7 @@ header .navigation .menu-list li a {
 .intro-section {
   height: 100vh;
   position: relative;
-  background-image: url('./Images/Image1.jpg');
+  background-image: url('/Images/Image1.jpg');
   background-position: center bottom -200px;
   background-size: cover;
   min-width: 100%;
@@ -402,7 +402,7 @@ header .navigation .menu-list li a {
 
 .second-section {
   height: 350px;
-  background-image: url('./Images/UnityBeltBJJ.png');
+  background-image: url('/Images/UnityBeltBJJ.png');
   background-size: cover;
   background-position: center;
   position: relative;
