@@ -145,11 +145,11 @@ header .navigation .menu-list li a {
 /* ====== Placeholder Section Styles ====== */
 .placeholder {
     background-color: #f0f0f0;
-    padding: 60px 20px;
+    padding: 150px 20px;
     text-align: center;
     height:100%;
-    margin-top:10%;
-    margin-bottom:15%;
+    margin-top:0%;
+    margin-bottom:0%;
 }
 
 .placeholder-container {
@@ -256,22 +256,6 @@ footer {
 .footer-section a {
     color: red;
     text-decoration: none;
-}
-
-.competition-info {
-    background-color: #f9f9f9;
-    padding: 60px 20px;
-    text-align: center;
-    margin-top: 10%;
-}
-
-.competition-container {
-    background-color: #fff;
-    padding: 40px;
-    max-width: 800px;
-    margin: 0 auto;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
 }
 
 #firebaseData p {

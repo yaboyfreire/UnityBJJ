@@ -249,7 +249,7 @@ calcularLucrosPorCategoria().then(({ labels, values }) => {
         },
         title: {
           display: true,
-          text: 'Lucros Mensais (Mês Atual)',
+        
           color: 'white',
           font: {
             size: 16
