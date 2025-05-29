@@ -273,88 +273,6 @@ header .navigation .menu-list li a {
     cursor: pointer;
   }
   
-  /* Card styling */
-  .profile-section {
-    margin-top: 65px;
-    /* a bit more spacing under the fixed nav */
-    background-color: #2b2b2b;
-    padding: 30px;
-}
-
-.profile-card {
-    display: flex;
-    align-items: center;
-    background-color: #1a1a1a;
-    color: white;
-    padding: 30px;
-    border-radius: 10px;
-    position: relative;
-    flex-wrap: wrap;
-}
-
-.profile-img {
-    width: 120px;
-    height: 120px;
-    border-radius: 5px;
-    margin-right: 30px;
-    object-fit: cover;
-}
-
-.profile-info {
-    flex: 1;
-}
-
-.profile-info h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-    font-family: 'Oswald', sans-serif;
-}
-
-.profile-info p {
-    font-size: 1.25rem;
-    margin: 4px 0;
-    font-family: 'Oswald', sans-serif;
-}
-
-.belt-divider {
-    width: 100%;
-    margin-top: 15px;
-}
-
-.belt {
-    position: relative; /* Needed for absolute positioning */
-    height: 16px;
-    margin-top: 20px;
-    width: 100%;
-    background-color: #a020f0; /* Purple background for entire belt */
-}
-.purple-belt {
-    flex: 8.5;
-    background-color: #a020f0;
-    margin-right: -5%; /* Allows black to overlap */
-}
-
-.black-tip {
-    position: absolute;
-    right: 5%; /* Leaves 5% purple at the end */
-    width: 20%; /* Width of black tip - adjust as needed */
-    height: 100%;
-    background-color: black;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 5px;
-    gap: 5px;
-}
-
-.stripe {
-    width: 4px;
-    height: 100%;
-    background-color: white;
-}
-
-
 /* Footer */
 footer {
     background-color: #020202;
@@ -516,7 +434,8 @@ footer {
 
   /* Attendance Container Styles */
 .attendance-container {
-  max-width: 1200px;
+  max-width: none;
+  width: 70%;
   margin: 2rem auto;
   padding: 0 20px;
 }
@@ -527,6 +446,8 @@ footer {
   padding: 20px;
   margin-bottom: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width:100% ;
+  max-width: none;
 }
 
 .class-title {
