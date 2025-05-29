@@ -119,7 +119,8 @@ async function registerUser(e) {
       start_date  : Timestamp.now(),
       birth_date  : data.birth,
       start_year  : n.year,
-      user        : userRef
+      user        : userRef,
+      studentStatus: "Active"
     });
 
     /* 3.5 success ➜ show ID & redirect */

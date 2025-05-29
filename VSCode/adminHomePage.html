@@ -9,10 +9,10 @@
   <link rel="stylesheet" href="adminHomePage.css" />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet" />
 
-  <!-- EXISTING MAIN SCRIPT (kept as a module in case it uses ES-imports) -->
+  <!-- EXISTING MAIN SCRIPT (kept as a module in case it uses ES‑imports) -->
   <script type="module" src="adminHomePage.js"></script>
 
-  <!-- NEW: Firebase core libraries (must be loaded before our module that imports them) -->
+  <!-- Firebase core libraries (must be loaded before our module that imports them) -->
   <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js"></script>
 </head>
@@ -48,10 +48,9 @@
           </div>
         </li>
 
-        <!-- NEW “Content” dropdown replaces the old “Graphics” entry -->
+        <!-- NEW “Graphs” dropdown -->
         <li class="dropdown">
           <a href="adminGraphics.html">Graphs</a>
-          
         </li>
 
         <li><a href="adminSettings.html">Settings</a></li>
@@ -89,7 +88,7 @@
           </div>
         </div>
 
-        <!-- Quick actions (1 new button) -->
+        <!-- Quick actions -->
         <div class="quick-actions">
           <h2>Quick Actions</h2>
           <div class="action-buttons">
@@ -109,7 +108,7 @@
           </div>
         </div>
 
-        <!-- Recent activity (unchanged placeholder) -->
+        <!-- Recent activity (placeholder) -->
         <div class="recent-activity">
           <h2>Recent Activity</h2>
           <div class="activity-list"></div>
@@ -119,8 +118,7 @@
   </main>
 
   <!-- ================== FOOTER ================== -->
-<footer>
-
+  <footer>
     <div class="footer-container">
       <div class="footer-section">
         <p><img src="./Images/icon.png" alt="Phone Icon"> Admin Support: 987654321</p>
@@ -144,14 +142,13 @@
         </ul>
       </div>
     </div>
-
     <div class="footer-bottom">
       <hr class="separator" />
       <p>&copy; 2025 Unity BJJ Admin System. Version <span id="version">1.0.0</span></p>
     </div>
   </footer>
 
-  <!-- ================== EXISTING LOG-OUT MODAL ================== -->
+  <!-- ================== LOG‑OUT MODAL (unchanged) ================== -->
   <div id="logoutModal" class="modal">
     <div class="modal-content">
       <span class="close-btn">&times;</span>
@@ -161,7 +158,7 @@
     </div>
   </div>
 
-  <!-- ================== NEW “ADD COMPETITION” MODAL ================== -->
+  <!-- ================== ADD COMPETITION MODAL ================== -->
   <div id="addCompetitionModal" class="modal">
     <div class="modal-content animated-modal">
       <span class="close-btn" onclick="closeCompetitionModal()">&times;</span>
@@ -180,6 +177,18 @@
         <label for="coordinates">Coordinates (lat, lng):</label>
         <input type="text" id="coordinates" placeholder="e.g. 38.7223, -9.1393" required />
 
+        <!-- ============ IMAGE LINK & PREVIEW (NEW) ============ -->
+        <div class="photo-link-group">
+          <label for="photoLink">Image URL:</label>
+          <div class="photo-input-wrapper">
+            <input type="url" id="photoLink" placeholder="https://example.com/photo.jpg" />
+          </div>
+          <div id="photoPreview" class="photo-preview" style="display:none;">
+            <img id="previewImage" src="" alt="Preview" />
+          </div>
+        </div>
+
+        <!-- REGISTRATION -->
         <label for="regStart">Start of Registration:</label>
         <input type="date" id="regStart" required />
 
@@ -189,6 +198,7 @@
         <label for="priceSlider">Registration Price: <span id="priceValue">€50</span></label>
         <input type="range" id="priceSlider" min="10" max="100" step="1" value="50" />
 
+        <!-- SUBMIT -->
         <button type="submit" class="action-btn" style="margin-top:10px;">
           <img src="./Images/trophy.png" alt="Add" /> Add
         </button>
@@ -198,7 +208,7 @@
 
   <!-- ================== HELPER SCRIPTS ================== -->
   <script>
-    /* simple open / close */
+    // Simple open / close helpers
     function openCompetitionModal() { document.getElementById('addCompetitionModal').style.display = 'block'; }
     function closeCompetitionModal() { document.getElementById('addCompetitionModal').style.display = 'none'; }
     window.onclick = e => {
@@ -207,20 +217,20 @@
     };
   </script>
 
-  <!-- FIREBASE WRITE + FORM SUBMIT (module) -->
+  <!-- ============= FIREBASE WRITE + FORM SUBMIT (module) ============= -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-    import { getFirestore, collection, addDoc, GeoPoint } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js';
+    import { getFirestore, collection, addDoc, GeoPoint } from 'https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js';
 
     /*  >>>>>> REPLACE WITH YOUR OWN CREDENTIALS IF NECESSARY <<<<<<  */
     const firebaseConfig = {
-      apiKey: "AIzaSyAvXmhq6Gj75Jbuxqph4rJGmlLz6axXIoc",
-      authDomain: "unitybjj-254ce.firebaseapp.com",
-      projectId: "unitybjj-254ce",
-      storageBucket: "unitybjj-254ce.appspot.com",
-      messagingSenderId: "120660951337",
-      appId: "1:120660951337:web:25bf767fadf75dcb5d3738",
-      measurementId: "G-6ZL2SRMBD5"
+      apiKey: 'AIzaSyAvXmhq6Gj75Jbuxqph4rJGmlLz6axXIoc',
+      authDomain: 'unitybjj-254ce.firebaseapp.com',
+      projectId: 'unitybjj-254ce',
+      storageBucket: 'unitybjj-254ce.appspot.com',
+      messagingSenderId: '120660951337',
+      appId: '1:120660951337:web:25bf767fadf75dcb5d3738',
+      measurementId: 'G-6ZL2SRMBD5'
     };
 
     const app = initializeApp(firebaseConfig);
@@ -228,26 +238,28 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       const form = document.getElementById('competitionForm');
-
       form.addEventListener('submit', async e => {
         e.preventDefault();
 
         const [lat, lng] = document.getElementById('coordinates').value.split(',').map(v => parseFloat(v.trim()));
+        const photoLink   = document.getElementById('photoLink').value.trim();
 
         try {
           await addDoc(collection(db, 'Competition'), {
-            Title: document.getElementById('compName').value,
-            Date:  new Date(document.getElementById('compDate').value),
-            Local: document.getElementById('compLocation').value,
-            localizacao: new GeoPoint(lat, lng),
-            RegistrationStart: new Date(document.getElementById('regStart').value),
-            RegistrationEnd:   new Date(document.getElementById('regEnd').value),
-            Price: parseFloat(document.getElementById('priceSlider').value)
+            Title:               document.getElementById('compName').value,
+            Date:                new Date(document.getElementById('compDate').value),
+            Local:               document.getElementById('compLocation').value,
+            localizacao:         new GeoPoint(lat, lng),
+            RegistrationStart:   new Date(document.getElementById('regStart').value),
+            RegistrationEnd:     new Date(document.getElementById('regEnd').value),
+            Price:               parseFloat(document.getElementById('priceSlider').value),
+            Link:                photoLink              // <<<<<< NEW FIELD
           });
 
           alert('Competition added successfully!');
           form.reset();
           closeCompetitionModal();
+          document.getElementById('photoPreview').style.display = 'none';
         } catch (err) {
           console.error(err);
           alert('Error while saving. Check the console.');
@@ -256,7 +268,7 @@
     });
   </script>
 
-  <!-- AUTO-FILL COORDINATES (OpenStreetMap) -->
+  <!-- ============= AUTO‑FILL COORDINATES (OpenStreetMap) ============= -->
   <script type="module">
     document.addEventListener('DOMContentLoaded', () => {
       const locationInput = document.getElementById('compLocation');
@@ -282,12 +294,31 @@
     });
   </script>
 
-  <!-- LIVE SLIDER LABEL -->
+  <!-- ============= LIVE SLIDER LABEL ============= -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const slider = document.getElementById('priceSlider');
       const label  = document.getElementById('priceValue');
       slider.addEventListener('input', () => { label.textContent = `€${slider.value}`; });
+    });
+  </script>
+
+  <!-- ============= IMAGE PREVIEW HELPER (NEW) ============= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const linkInput    = document.getElementById('photoLink');
+      const previewWrap  = document.getElementById('photoPreview');
+      const previewImage = document.getElementById('previewImage');
+
+      linkInput.addEventListener('blur', () => {
+        const url = linkInput.value.trim();
+        if (url) {
+          previewImage.src = url;
+          previewWrap.style.display = 'block';
+        } else {
+          previewWrap.style.display = 'none';
+        }
+      });
     });
   </script>
 </body>
