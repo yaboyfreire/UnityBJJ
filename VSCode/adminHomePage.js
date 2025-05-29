@@ -68,8 +68,7 @@ async function getActiveMembersCount() {
 
     const snapshot = await getDocs(membersRef);
     const activeCount = snapshot.docs.filter(doc => {
-        const statusRef = doc.data().Status;
-        return statusRef && statusRef.path === "studentStatus/2";
+        return doc.data().studentStatus === "Active";
     }).length;
 
     return activeCount;
