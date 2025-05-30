@@ -28,7 +28,6 @@ const db = getFirestore(app);
 document.addEventListener('DOMContentLoaded', function () {
     // Verify admin role first for security
     if (localStorage.getItem('role') !== '1') {
-        localStorage.clear();
         window.location.href = 'GenericHomePage.html';
         return;
     }

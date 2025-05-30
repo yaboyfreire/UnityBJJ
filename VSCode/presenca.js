@@ -97,6 +97,8 @@ async function fetchClassData() {
   }
 }
 
+
+
 async function submitUserId() {
   const input     = document.getElementById("userId");
   const nAluno    = input.value.trim();
