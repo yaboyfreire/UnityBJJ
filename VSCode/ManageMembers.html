@@ -99,6 +99,7 @@
 
   </main>
 
+
   <!-- ================== FOOTER ================== -->
   <footer>
     <div class="footer-container">
@@ -131,6 +132,20 @@
       <p>&copy; 2025 Unity BJJ Admin System. Version <span id="version">1.0.0</span></p>
     </div>
   </footer>
+  <div id="editModal" class="hidden">
+    <div class="modal-content">
+      <h3>Edit Member</h3>
+      <input type="text" id="editName" placeholder="Name" />
+      <input type="email" id="editEmail" placeholder="Email" />
+      <input type="text" id="editBelt" placeholder="Belt" />
+      <input type="text" id="editStatus" placeholder="Status" />
+      <div class="modal-buttons">
+        <button id="saveEditBtn">Save</button>
+        <button id="cancelEditBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
 </body>
+
 
 </html>
