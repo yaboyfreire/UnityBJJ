@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let age = 'N/A';
         let faixa = 'Unknown';
         let nationality = 'Unknown';
+        let nAluno = '-'
 
         if (studentDataRaw) {
             try {
@@ -39,6 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         age--;
                     }
                 }
+                // nAluno 
+                nAluno = studentData.nAluno || '-'
 
             } catch (e) {
                 console.error('Error parsing studentData:', e);
@@ -50,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('.profile-info p:nth-child(2)').textContent = `Nationality: ${nationality}`;
         document.querySelector('.profile-info p:nth-child(3)').textContent = `Member since ${memberSince}`;
         document.querySelector('.profile-info p:nth-child(4)').textContent = `Age: ${age}`;
+        document.querySelector('.profile-info p:nth-child(5)').textContent = `Student nº: ${nAluno}`;
 
         // Update leaderboard name
         document.querySelectorAll('.leader-card, .ranking-card').forEach(card => {
