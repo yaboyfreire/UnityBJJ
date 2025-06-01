@@ -33,7 +33,7 @@ introduzir por esta ordem:
 * Register
 * Marcar Aulas
 * Marcar Presença nas aulas
-* Adicionar Competições
+* Adicionar e ver Competições
 * Gerir Competições
 * Perfil do Utilizador (info utilizador,achievements,competition,rankings,graduations)
 * Pagamentos
@@ -46,7 +46,7 @@ introduzir por esta ordem:
 * Login
 * Register
 * Marcar Presença nas aulas
-* Adicionar Competições
+* Adicionar e ver Competições
 * Perfil do Utilizador (info utilizador)
 * Ver Presenças
 * Estatísticas da Academia
