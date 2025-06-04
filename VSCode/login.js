@@ -38,7 +38,7 @@ async function loginUser(event) {
         const userDocSnap = await getDoc(userDocRef);
 
         if (!userDocSnap.exists()) {
-            alert("User data not found in Firestore.");
+            alert("We couldn't find this user.");
             return;
         }
 
@@ -86,8 +86,6 @@ async function loadAndStoreStudentData(userId) {
     const studentSnap = await getDoc(studentRef);
 
     if (studentSnap.exists()) {
-        alert("Exists");  // Ensure to display the data properly
-        alert(JSON.stringify(studentSnap.data()));
         localStorage.setItem("studentData", JSON.stringify(studentSnap.data()));
     } else {
         alert("No such student found!");
